@@ -1,0 +1,19 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = rosascript@gmail.com
+	name = ashe
+	signingkey = A6A7330EA97EFB92
+[commit]
+	gpgsign = true
+[alias]
+	pullall = pull --all
+	co = checkout
+	conf = config
+	confg = config --global
+	pushall = push --all
+	sync = !git pullall && git pushall
