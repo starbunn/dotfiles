@@ -1,5 +1,5 @@
 [submodule "/home/ashx/.config/zsh/rose-pine-fzf"]
-	path = /home/ashx/.config/zsh/rose-pine-fzf
+	path = .config/zsh/rose-pine-fzf
 	url = https://github.com/rose-pine/fzf
 [submodule ".config/kitty/rose-pine"]
 	path = .config/kitty/rose-pine
