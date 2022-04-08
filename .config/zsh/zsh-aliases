@@ -1,0 +1,33 @@
+alias please="sudo"
+alias pwease="sudo"
+alias uwu="sudo"
+alias owo="sudo"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+alias dots="/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME"
+
+zconf() {
+    vim $ZDOTDIR/$1
+}
+
+alias zrc="zconf .zshrc"
+
+alias listpackages="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+
+if [ "$(which exa)" ]; then
+    alias l="exa -a --icons"
+    alias ls="exa -a --icons"
+    alias ll="exa -la --no-time --icons"
+    alias la="exa -la --no-time --icons"
+fi
+
+if [ "$(which git)" ]; then
+    alias g="git"
+    alias lg="exa -la --icons --no-time --git-ignore --git"
+fi
+
+if [ "$(which zoxide)" ]; then
+    eval "$(zoxide init zsh)"
+fi

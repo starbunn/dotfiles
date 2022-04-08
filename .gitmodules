@@ -1,0 +1,3 @@
+[submodule "/home/ashx/.config/zsh/rose-pine-fzf"]
+	path = /home/ashx/.config/zsh/rose-pine-fzf
+	url = https://github.com/rose-pine/fzf

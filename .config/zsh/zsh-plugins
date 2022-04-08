@@ -1,0 +1,9 @@
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light MichaelAquilina/zsh-you-should-use
+
+zinit ice wait'1' lucid
+zinit light laggardkernel/zsh-thefuck

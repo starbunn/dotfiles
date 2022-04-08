@@ -1,0 +1,11 @@
+#!/bin/sh
+export HISTFILE=$ZDOTDIR/zsh-history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+# export PATH="$HOME/.local/bin":$PATH
+# export MANPAGER="nvim +Man!"
+export MANWIDTH=9999
+
+export EDITOR="code"
+export TERMINAL="kitty"
+export BROWSER="firefox"
