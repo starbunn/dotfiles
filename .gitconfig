@@ -18,3 +18,4 @@
 	pushall = push --all
 	sync = !git pullall && git pushall
 	unstage = restore --staged
+	stat = status
