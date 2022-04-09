@@ -34,7 +34,7 @@ if [ ! -d "/tmp/$(whoami)/screenshots" ]; then
     mkdir -p "/tmp/$(whoami)/screenshots"
 fi
 
-[ "$(which bat)" ] && export BAT_THEME="rose-pine" && export MANPAGER="sh -c 'col -bx | bat --theme gruvbox-dark -l man -p'"
+[ "$(which bat)" ] && export BAT_THEME="Nord" && export MANPAGER="sh -c 'col -bx | bat --theme Nord -l man -p'"
 
 [ "$(which nvm)" ] && source /usr/share/nvm/init-nvm.sh
 [ -f "$HOME/bin/log" ] && alias log='~/bin/log'
