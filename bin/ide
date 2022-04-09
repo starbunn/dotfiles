@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tmux new -s ide -d
+tmux new-window -t ide:2
+tmux split-window -t ide:1 -v
+tmux send-keys -t ide:1.0 'exec vim' Enter
+tmux send-keys -t ide:1.1 clear Enter
+tmux rename-window -t ide:1 'editor'
+tmux a -t ide
