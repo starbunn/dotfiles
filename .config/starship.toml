@@ -6,7 +6,7 @@ continuation_prompt = "[▶](bold #c4a7e7) "
 #  <-- git icon
 
 [character]
-success_symbol = "[▲](bold #ebbcba)"
+success_symbol = "[▲](#ebbcba)"
 error_symbol = "[▲](bold #eb6f92)"
 # vicmd_symbol = "[](bold #c4a7e7)"
 vicmd_symbol = "[▼](bold #c4a7e7)"
@@ -19,21 +19,21 @@ style = "bold #9ccfd8"
 [status]
 disabled = false
 format = "[$status]($style)[ < ](bold #524f67)"
-style = "bold #eb6f92"
+style = "bold italic #eb6f92"
 
 [cmd_duration]
 disabled = false
 format = "[$duration]($style)[ < ](bold #524f67)"
 show_milliseconds = true
-style = "bold #ebbcba"
+style = "bold italic #ebbcba"
 min_time = "500"
 
 [directory]
 format = "[$path]($style)[ $read_only]($read_only_style) "
 read_only = ""
 truncate_to_repo = false
-style = "bold #31748f"
-repo_root_style = "bold #6e6a86"
+style = "#31748f"
+repo_root_style = "bold italic #6e6a86"
 read_only_style = "bold #eb6f92"
 fish_style_pwd_dir_length = 1
 truncation_length = 2
@@ -42,10 +42,10 @@ truncation_length = 2
 format = "[$user]($style)[@](bold #524f67)"
 show_always = true
 style_root = "bold #eb6f92"
-style_user = "bold #31748f"
+style_user = "#31748f"
 
 [git_status]
-format = "([{$all_status$ahead_behind}]($style))"
+format = "([{[$all_status$ahead_behind](bold italic #6e6a86)}]($style))"
 modified = "M"
 renamed = "R"
 conflicted = "≠"
@@ -59,7 +59,7 @@ command = "echo -n '!'"
 when = "sudo -vn &>/dev/null && [ \"$(whoami)\" != \"root\" ]"
 description = "prints a ! if you have sudo creds, otherwise nothing"
 shell = ["bash", "--norc", "--noprofile"]
-style = "bold #31748f"
+style = "bold italic #31748f"
 format = "[$output]($style)"
 
 [custom.gitbranch]
@@ -69,4 +69,4 @@ description = "shows git branch if you are in a git repo"
 shell = ["bash", "--norc", "--noprofile"]
 style = "#6e6a86"
 # (branch in folder) format = " [$output](bold $style)[ in ]($style)"
-format = "[$output](bold $style)"
+format = "[$output](bold italic $style)"
