@@ -17,4 +17,4 @@
 	confg = config --global
 	pushall = push --all
 	sync = !git pullall && git pushall
-	unstage = rm --cached -r
+	unstage = restore --staged

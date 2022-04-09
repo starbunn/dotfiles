@@ -106,3 +106,4 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+zsh_add_file "zsh-nvm"
