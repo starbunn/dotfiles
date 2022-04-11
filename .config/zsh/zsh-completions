@@ -3,3 +3,6 @@ zinit light zsh-users/zsh-completions
 
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+zinit ice as"completion"
+zinit light pkulev/zsh-rustup-completion
