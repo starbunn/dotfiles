@@ -4,3 +4,6 @@
 [submodule ".config/kitty/rose-pine"]
 	path = .config/kitty/rose-pine
 	url = https://github.com/rose-pine/kitty
+[submodule "pyrasevid/font"]
+	path = pyrasevid/font
+	url = https://github.com/be5invis/Iosevka
