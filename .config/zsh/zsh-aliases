@@ -25,6 +25,11 @@ if [ "$(which exa)" ]; then
     alias ls="exa -a --icons"
     alias ll="exa -la --no-time --icons"
     alias la="exa -la --no-time --icons"
+    alias ghprojs="exa -la --no-time --icons -T -L 2 ~/code/gh"
+fi
+
+if [ "$(which patch)" ]; then
+    alias unpatch="patch -RR"
 fi
 
 if [ "$(which git)" ]; then
