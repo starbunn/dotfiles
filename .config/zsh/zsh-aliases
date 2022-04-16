@@ -29,7 +29,7 @@ if [ "$(which exa)" ]; then
 fi
 
 if [ "$(which patch)" ]; then
-    alias unpatch="patch -RR"
+    alias unpatch="patch -R"
 fi
 
 if [ "$(which git)" ]; then
