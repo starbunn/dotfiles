@@ -1,0 +1,700 @@
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	vim.fn.execute(
+		'!git clone https://github.com/wbthomason/packer.nvim ' .. install_path
+	)
+end
+
+vim.cmd [[
+augroup Packer
+	autocmd!
+	autocmd BufWritePost ~/.config/nvim/init.lua :so %
+	autocmd BufWritePost ~/.config/nvim/init.lua PackerSync
+	autocmd BufWritePost ~/.config/nvim/init.lua PackerCompile
+augroup end
+]]
+
+local use = require('packer').use
+require("packer").startup(function()
+
+	use 'rktjmp/lush.nvim'
+
+	-- Package Manager
+	use 'wbthomason/packer.nvim'
+
+	-- LSP Client
+	use 'neovim/nvim-lspconfig'
+
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons'
+		}
+	}
+
+	-- Language Server installer
+	use {
+		'williamboman/nvim-lsp-installer',
+		requires = "neovim/nvim-lspconfig",
+	}
+
+	-- Autocomplete Symbols
+	use 'onsails/lspkind-nvim'
+	-- lsp elements as ui
+	use { 'tami5/lspsaga.nvim', requires = { 'neovim/nvim-lspconfig' } }
+
+	-- Autocomplete Plugin
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+		},
+	}
+
+	-- snippets
+	use {
+		'saadparwaiz1/cmp_luasnip',
+		requires = {
+			'L3MON4D3/LuaSnip',
+		},
+	}
+
+	-- bracket autocompletion
+	use "vim-scripts/auto-pairs-gentle"
+
+	-- statusline
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = {
+			'kyazdani42/nvim-web-devicons',
+			'arkav/lualine-lsp-progress',
+		},
+	}
+
+	use 'nvim-treesitter/nvim-treesitter'
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+	-- copilot
+	use "github/copilot.vim"
+
+	-- colorscheme until i get a better one
+	use 'navarasu/onedark.nvim'
+
+	-- devcontainers
+	use 'jamestthompson3/nvim-remote-containers'
+
+	-- git
+	use 'tpope/vim-fugitive'
+
+	-- comment
+	use 'numToStr/Comment.nvim'
+
+	-- tag manager
+	-- make sure to install universal ctags
+	use 'ludovicchabant/vim-gutentags'
+
+	-- telescope
+	use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+	-- indentation guides on blank lines
+	use 'lukas-reineke/indent-blankline.nvim'
+
+	-- gitsigns
+	use { 'lewis6991/gitsigns.nvim', requires = { "nvim-lua/plenary.nvim" } }
+
+	-- bufferline
+	use {'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
+end)
+
+local opt = vim.opt -- global
+local g   = vim.g -- global for let options
+local wo  = vim.wo -- window local
+local bo  = vim.bo -- buffer local
+local fn  = vim.fn -- access vim functions
+local cmd = vim.cmd -- vim commands
+
+local map = function(mode, lhs, rhs, opts)
+	local options = { noremap = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+-- mouse support
+opt.mouse = "a"
+
+-- clipboard
+opt.clipboard = "unnamedplus"
+
+-- splits
+opt.splitright = true
+opt.splitbelow = true
+
+-- get rid of " -- INSERT -- " because we have statusline
+opt.showmode = false
+
+-- enable autowriteall
+opt.autowriteall = true
+
+-- show line numbers
+wo.number = true
+wo.relativenumber = true
+
+-- show chars at end of line
+opt.list = true
+
+-- enable break indent
+opt.breakindent = true
+
+-- case insensitive searching unless /C or capital in search
+opt.ignorecase = true
+opt.smartcase = true
+
+-- decrease update time
+opt.updatetime = 250
+
+-- show signs by autocompletion plugin
+wo.signcolumn = "yes"
+
+-- termguicolors
+opt.termguicolors = true
+
+-- completeopt for better complete experience
+opt.completeopt = "menu,menuone,noselect"
+
+-- undofile
+opt.undofile = true
+bo.undofile = true
+
+-- remap for dealing with word wrap
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, silent = true, expr = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, silent = true, expr = true })
+
+-- remap space as leader key
+vim.keymap.set({ 'n', 'v' }, '<Space>', 'Nop', { silent = true })
+g.mapleader = ' '
+g.maplocalleader = ' '
+
+-- explorer
+map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', {silent = true})
+
+-- window navigation
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
+
+-- keeping it centered
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "J", "mzJ`z")
+
+-- Resize with Arrows
+map('n', '<C-Up>', ':resize -2<CR>', { silent = true })
+map('n', '<C-Down>', ':resize +2<CR>', { silent = true })
+map('n', '<C-Left>', ':vertical resize -2<CR>', { silent = true })
+map('n', '<C-Right>', ':vertical resize +2<CR>', { silent = true })
+
+local opts = { silent = true }
+
+-- buffer navigation
+map("n", '<S-l>', ':bnext<CR>', { silent = true })
+map("n", '<S-h>', ':bprevious<CR>', { silent = true })
+
+-- Move text up and down
+map("n", "<A-j>", "<Esc>:m .+1<CR>==g", opts)
+
+map("n", "<A-k>", "<Esc>:m .-2<CR>==g", opts)
+-- Insert --
+-- Press jk fast to enter
+-- map("i", "jk", "<ESC>", opts)
+
+-- Undo Breakpoints
+map("n", ",", ",<c-g>u", opts)
+map("n", ".", ".<c-g>u", opts)
+map("n", "!", "!<c-g>u", opts)
+map("n", "?", "?<c-g>u", opts)
+
+-- Visual --
+-- Stay in indent mode
+map("v", "<", "<gv", opts)
+map("v", ">", ">gv", opts)
+
+-- Move text up and down
+map("v", "<A-k>", ":m .-2<CR>==", opts)
+map("v", "<A-j>", ":m .+1<CR>==", opts)
+map("v", "p", '"_dP', opts)
+
+-- Visual Block --
+-- Move text up and down
+map("x", "J", ":move '>+1<CR>gv=gv", opts)
+map("x", "K", ":move '<-2<CR>gv=gv", opts)
+map("x", "<A-j>", ":move '>+1<CR>gv=gv", opts)
+map("x", "<A-k>", ":move '<-2<CR>gv=gv", opts)
+
+-- highlight on yank
+vim.cmd [[
+augroup YankHighlight
+autocmd!
+autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+augroup end
+]]
+
+-- Map blankline
+g.indent_blankline_char = '┊'
+g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+g.indent_buftype_exclude = { 'terminal', 'nofile' }
+g.indent_blankline_show_trailing_blankline_indent = false
+
+-- bufferline
+require("bufferline").setup {
+	options = {
+		mode = "buffers",
+		numbers = "none",
+		close_command = "bdelete! %d",
+		left_mouse_command = "buffer %d",
+		indicator_icon = '▎',
+		buffer_close_icon = '',
+		modified_icon = '●',
+		close_icon = '',
+		left_trunc_marker = '',
+		right_trunc_marker = '',
+		name_formatter = function(buf)
+			if buf.name:match('%.md') then
+				return vim.fn.fnamemodify(buf.name, ':t:r')
+			end
+		end,
+		max_name_length = 18,
+		max_prefix_length = 15,
+		tab_size = 18,
+		diagnostics = "nvim_lsp",
+		diagnostics_update_in_insert = false,
+		diagnostics_indicator = function(count, level, diagnostics_dict, context)
+			return "("..count..")"
+		end,
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "Explorer",
+				text_align = "center"
+			},
+		},
+		color_icons = true,
+		show_buffer_icons = true,
+		show_buffer_close_icons = true,
+		show_buffer_default_icon = true,
+		show_close_icon = true,
+		show_tab_indicators = true,
+	}
+}
+
+-- nvimtree
+require 'nvim-tree'.setup {
+	disable_netrw        = true,
+	hijack_netrw         = true,
+	open_on_setup        = true,
+	ignore_ft_on_setup   = {},
+	auto_close           = false,
+	auto_reload_on_write = true,
+	open_on_tab          = false,
+	hijack_cursor        = false,
+	update_cwd           = false,
+	update_to_buf_dir    = {
+		enable = true,
+		auto_open = true,
+	},
+	diagnostics          = {
+		enable = false,
+		icons = {
+			hint = "",
+			info = "",
+			warning = "",
+			error = "",
+		}
+	},
+	update_focused_file  = {
+		enable      = true,
+		update_cwd  = true,
+		ignore_list = {}
+	},
+	system_open          = {
+		cmd  = nil,
+		args = {}
+	},
+	filters              = {
+		dotfiles = true,
+		custom = {}
+	},
+	git                  = {
+		enable = true,
+		ignore = true,
+		timeout = 500,
+	},
+	view                 = {
+		width = 30,
+		height = 30,
+		hide_root_folder = false,
+		side = 'left',
+		auto_resize = true,
+		mappings = {
+			custom_only = false,
+			list = {}
+		},
+		number = false,
+		relativenumber = false,
+		signcolumn = "yes"
+	},
+	trash                = {
+		cmd = "trash",
+		require_confirm = true
+	},
+	actions              = {
+		change_dir = {
+			global = false,
+		},
+		open_file = {
+			quit_on_open = false,
+		}
+	}
+}
+vim.cmd([[
+    let g:nvim_tree_icons = {
+        \ 'default': '',
+        \ 'symlink': '',
+        \ 'git': {
+        \   'unstaged': "✗",
+        \   'staged': "✓",
+        \   'unmerged': "",
+        \   'renamed': "➜",
+        \   'untracked': "★",
+        \   'deleted': "",
+        \   'ignored': "◌"
+        \   },
+        \ 'folder': {
+        \   'arrow_open': "",
+        \   'arrow_closed': "",
+        \   'default': "",
+        \   'open': "",
+        \   'empty': "",
+        \   'empty_open': "",
+        \   'symlink': "",
+        \   'symlink_open': "",
+        \   }
+        \ }
+    ]])
+
+-- Gitsigns
+require('gitsigns').setup {
+	signs = {
+		add = { text = "+" },
+		change = { text = "~" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = '~' },
+	}
+}
+
+-- telescope
+require('telescope').setup {
+	defaults = {
+		mappings = {
+			i = {
+				['<C-u>'] = false,
+				['<C-d>'] = false,
+			},
+		},
+	},
+}
+
+require('telescope').load_extension 'fzf'
+
+-- Comment.nvim
+require('Comment').setup()
+
+-- LspConfig
+require('lspconfig')
+local lsp_installer = require('nvim-lsp-installer')
+
+-- the required servers
+local servers = {
+	"bashls",
+	"pyright",
+	"rust_analyzer",
+	"sumneko_lua",
+	"html",
+	"clangd",
+	"vimls",
+	"emmet_ls",
+}
+
+for _, name in pairs(servers) do
+	local server_is_found, server = lsp_installer.get_server(name)
+	if server_is_found and not server:is_installed() then
+		print("Installing " .. name)
+		server:install()
+	end
+end
+
+-- lsp keybinds
+local on_attach = function(_, bufnr)
+	local function buf_set_keymap(...)
+		vim.api.nvim_buf_set_keymap(bufnr, ...)
+	end
+
+	local function buf_set_option(...)
+		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
+
+	-- Enable completion triggered by <c-x><c-o>
+	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+	local opts = { noremap = true, silent = true }
+
+	-- == THE KEYMAPS == --
+	-- jump to definiton
+	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+
+	-- Format Buffer
+	buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+	-- Jump LSP diagnostics
+	buf_set_keymap('n', '[g', ':Lspsaga diagonstic_jump_prev<CR>', opts)
+	buf_set_keymap('n', ']g', ':Lspsaga diagonstic_jump_next<CR>', opts)
+
+	-- Rename symbol
+	buf_set_keymap('n', '<leader>lr', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
+
+	-- Find References
+	buf_set_keymap('n', 'gr', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
+
+	-- Doc popup scrolling
+	buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+	buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.hover').smart_scroll_with_saga(1)<CR>", opts)
+	buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.hover').smart_scroll_with_saga(-1)<CR>", opts)
+
+	-- codeaction
+	buf_set_keymap('n', '<leader>la', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
+	buf_set_keymap('v', '<leader>la', ':<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>', opts)
+
+	-- Floating Terminal
+	-- NOTE: vim.cmd since buf_set_keymap doesnt support tnoremap
+	vim.cmd [[
+		nnoremap <silent> <C-t> :lua require("lspsaga.floaterm").open_float_terminal()<CR>
+		tnoremap <silent> <C-t> <C-\><C-n>:lua require("lspsaga.floaterm").close_float_terminal()<CR>
+	]]
+end
+
+local server_specific_opts = {
+	sumneko_lua = function(opts)
+		opts.settings = {
+			Lua = {
+				completion = { callSnippet = "Replace" },
+				diagnostics = {
+					globals = { 'vim' },
+				},
+			},
+		}
+	end,
+
+	html = function(opts)
+		opts.filetypes = { "html", "htmldjango" }
+	end,
+}
+
+-- lsp setup finally
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+lsp_installer.on_server_ready(function(server)
+	-- keymaps, flags, and capabilities
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		flags = { debounce_text_changes = 150 }
+	}
+
+	-- server specific options
+	if server_specific_opts[server.name] then
+		server_specific_opts[server.name](opts)
+	end
+
+	-- and setup server
+	server:setup(opts)
+end)
+
+
+-- Autocomplete
+
+local lspkind = require('lspkind')
+local cmp = require("cmp")
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
+local cmp_kinds = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "ﰠ",
+	Variable = "",
+	Class = "ﴯ",
+	Interface = "",
+	Module = "",
+	Property = "ﰠ",
+	Unit = "塞",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "פּ",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
+
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			require 'luasnip'.lsp_expand(args.body)
+		end
+	},
+
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = "symbol",
+			preset = 'codicons',
+			sym_kind = cmp_kinds,
+			menu = ({
+				buffer = "[BUF]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[SNIP]",
+				nvim_lua = "[LUA]",
+				latex_symbols = "[LATEX]",
+			}),
+		}),
+	},
+
+	mapping = {
+		['<C-p>'] = cmp.mapping.select_prev_item(),
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		['<C-d>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.close(),
+		['<CR>'] = cmp.mapping.confirm {
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		},
+
+		-- Use Tab and Shift-Tab to browse through the suggestions.
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expandable() then
+				luasnip.expand()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif fn["vsnip#jumpable"](-1) == 1 then
+				feedkey("<Plug>(vsnip-jump-prev)", "")
+			end
+		end, { "i", "s" }),
+	},
+
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "path" },
+	}
+})
+
+cmp.setup.cmdline('/', {
+	sources = {
+		{ name = "buffer" },
+	},
+})
+
+cmp.setup.cmdline(':', {
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}), {
+		{ name = "cmdline" }
+	}
+})
+
+g.autopairs = {
+	['('] = ')',
+	['{'] = '}',
+	['['] = ']',
+	['<'] = '>',
+	['"'] = '"',
+	["'"] = "'",
+}
+
+-- colorscheme, later.
+require("onedark").setup({
+	style = "darker",
+})
+require("onedark").load()
+
+-- status bar
+
+require('lualine').setup({
+	sections = {
+		lualine_c = {
+			{ 'filename', path = 1 },
+			'lsp_progress'
+		},
+	},
+})
+
+require('nvim-treesitter.configs').setup {
+	ensure_installed = { "python", "rust", "c", "cpp", "bash", "go", "html" },
+	highlight = {
+		enable = true,
+	},
+}
+
+require("lspsaga").init_lsp_saga({
+	finder_action_keys = {
+		open = "<CR>",
+		quit = { 'q', '<ESC>' }
+	},
+	code_action_keys = {
+		quit = { 'q', '<ESC>' }
+	},
+	rename_action_keys = {
+		quit = { 'q', '<ESC>' }
+	},
+})
+
+-- devcontainers
