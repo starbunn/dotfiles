@@ -18,6 +18,10 @@ augroup end
 local use = require('packer').use
 require("packer").startup(function()
 
+	use 'lewis6991/impatient.nvim'
+
+	use "ahmedkhalf/project.nvim"
+
 	use 'rktjmp/lush.nvim'
 
 	-- Package Manager
@@ -108,8 +112,34 @@ require("packer").startup(function()
 	use { 'lewis6991/gitsigns.nvim', requires = { "nvim-lua/plenary.nvim" } }
 
 	-- bufferline
-	use {'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
+	use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons' }
+
+	-- faster filetype thing
+	use 'nathom/filetype.nvim'
+
+	-- gitlens-esque blame feature
+	use 'APZelos/blamer.nvim'
+
+	-- alpha
+	use {
+		'goolord/alpha-nvim',
+		requires = { 'kyazdani42/nvim-web-devicons' },
+	}
+
+	use 'simrat39/symbols-outline.nvim'
+
+	use {
+		'folke/trouble.nvim',
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function ()
+			require("trouble").setup()
+		end
+	}
 end)
+
+
+require 'impatient'
+
 
 local opt = vim.opt -- global
 local g   = vim.g -- global for let options
@@ -128,6 +158,9 @@ end
 
 -- mouse support
 opt.mouse = "a"
+
+-- timeout length
+opt.timeoutlen = 375
 
 -- clipboard
 opt.clipboard = "unnamedplus"
@@ -172,6 +205,7 @@ opt.completeopt = "menu,menuone,noselect"
 opt.undofile = true
 bo.undofile = true
 
+
 -- remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, silent = true, expr = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, silent = true, expr = true })
@@ -181,8 +215,17 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', 'Nop', { silent = true })
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+-- clear highlight
+map('n', '<leader>h', '<cmd>nohl<cr>', { silent = true })
+
+-- telescope
+map('n', '<leader>f', '<cmd>Telescope find_files<cr>', { silent = true })
+
+-- alpha
+map('n', '<leader>a', '<cmd>Alpha<cr>', { silent = true })
+
 -- explorer
-map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', {silent = true})
+map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { silent = true })
 
 -- window navigation
 map('n', '<C-h>', '<C-w>h')
@@ -203,6 +246,19 @@ map('n', '<C-Right>', ':vertical resize +2<CR>', { silent = true })
 
 local opts = { silent = true }
 
+-- list diagnostics
+map('n', '<leader>tt', '<cmd>TroubleToggle<cr>', opts)
+map('n', '<leader>tw', '<cmd>TroubleToggle workspace_diagnostics<cr>', opts)
+map('n', '<leader>td', '<cmd>TroubleToggle document_diagnostics<cr>', opts)
+map('n', '<leader>tq', '<cmd>TroubleToggle quickfix<cr>', opts)
+map('n', '<leader>tl', '<cmd>TroubleToggle loclist<cr>', opts)
+map('n', 'gr', '<cmd>TroubleToggle lsp_references<cr>', opts)
+
+-- save and quit
+map('n', '<leader>w', '<cmd>w<cr>', opts)
+map('n', '<leader>q', '<cmd>q<cr>', opts)
+map('n', '<leader>Q', '<cmd>qa!<cr>', opts)
+
 -- buffer navigation
 map("n", '<S-l>', ':bnext<CR>', { silent = true })
 map("n", '<S-h>', ':bprevious<CR>', { silent = true })
@@ -214,6 +270,9 @@ map("n", "<A-k>", "<Esc>:m .-2<CR>==g", opts)
 -- Insert --
 -- Press jk fast to enter
 -- map("i", "jk", "<ESC>", opts)
+
+-- symbols outline
+map("n", "<leader>so", "<cmd>SymbolsOutline<cr>", opts)
 
 -- Undo Breakpoints
 map("n", ",", ",<c-g>u", opts)
@@ -246,6 +305,13 @@ autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 augroup end
 ]]
 
+
+-- blamer
+g.blamer_enabled = 1
+g.blamer_delay = 500
+g.blamer_date_format = "%d/%m/%y"
+g.blamer_relative_time = 1
+
 -- Map blankline
 g.indent_blankline_char = '┊'
 g.indent_blankline_filetype_exclude = { 'help', 'packer' }
@@ -276,7 +342,7 @@ require("bufferline").setup {
 		diagnostics = "nvim_lsp",
 		diagnostics_update_in_insert = false,
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
-			return "("..count..")"
+			return "(" .. count .. ")"
 		end,
 		offsets = {
 			{
@@ -467,11 +533,12 @@ local on_attach = function(_, bufnr)
 	buf_set_keymap('n', '[g', ':Lspsaga diagonstic_jump_prev<CR>', opts)
 	buf_set_keymap('n', ']g', ':Lspsaga diagonstic_jump_next<CR>', opts)
 
+
 	-- Rename symbol
 	buf_set_keymap('n', '<leader>lr', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
 
 	-- Find References
-	buf_set_keymap('n', 'gr', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
+	-- buf_set_keymap('n', 'gr', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
 
 	-- Doc popup scrolling
 	buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
@@ -570,6 +637,8 @@ local cmp_kinds = {
 	Operator = "",
 	TypeParameter = "",
 }
+
+local luasnip = require("luasnip")
 
 cmp.setup({
 	snippet = {
@@ -678,7 +747,7 @@ require('lualine').setup({
 })
 
 require('nvim-treesitter.configs').setup {
-	ensure_installed = { "python", "rust", "c", "cpp", "bash", "go", "html" },
+	ensure_installed = { "python", "rust", "c", "cpp", "bash", "go", "html", "jsonc" },
 	highlight = {
 		enable = true,
 	},
@@ -698,3 +767,101 @@ require("lspsaga").init_lsp_saga({
 })
 
 -- devcontainers
+
+-- alpha
+local status_ok, alpha = pcall(require, "alpha")
+if not status_ok then
+	return
+end
+
+local dashboard = require("alpha.themes.dashboard")
+dashboard.section.header.val = {
+	-- get this from textkool.com/en/ascii-art-generator?hl=default&vl=default&font=Larry%203D%202&text=dreams
+	[[  __                                             ]],
+	[[ /\ \                                            ]],
+	[[ \_\ \  _ __    __     __      ___ ___     ____  ]],
+	[[ /'_` \/\`'__\/'__`\ /'__`\  /' __` __`\  /',__\ ]],
+	[[/\ \L\ \ \ \//\  __//\ \L\.\_/\ \/\ \/\ \/\__, `\]],
+	[[\ \___,_\ \_\\ \____\ \__/.\_\ \_\ \_\ \_\/\____/]],
+	[[ \/__,_ /\/_/ \/____/\/__/\/_/\/_/\/_/\/_/\/___/ ]],
+	[[                                                 ]],
+	[[                                                 ]],
+}
+dashboard.section.buttons.val = {
+	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
+	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+}
+
+local function footer()
+	-- NOTE: requires the fortune-mod package to work
+	-- local handle = io.popen("fortune")
+	-- local fortune = handle:read("*a")
+	-- handle:close()
+	-- return fortune
+	return "webcoredreams"
+end
+
+dashboard.section.footer.val = footer()
+
+dashboard.section.footer.opts.hl = "Type"
+dashboard.section.header.opts.hl = "Include"
+dashboard.section.buttons.opts.hl = "Keyword"
+
+dashboard.opts.opts.noautocmd = true
+-- vim.cmd([[autocmd User AlphaReady echo 'ready']])
+alpha.setup(dashboard.opts)
+
+-- project
+local status_ok, project = pcall(require, "project_nvim")
+if not status_ok then
+	return
+end
+project.setup({
+	---@usage set to false to disable project.nvim.
+	--- This is on by default since it's currently the expected behavior.
+	active = true,
+
+	on_config_done = nil,
+
+	---@usage set to true to disable setting the current-woriking directory
+	--- Manual mode doesn't automatically change your root directory, so you have
+	--- the option to manually do so using `:ProjectRoot` command.
+	manual_mode = false,
+
+	---@usage Methods of detecting the root directory
+	--- Allowed values: **"lsp"** uses the native neovim lsp
+	--- **"pattern"** uses vim-rooter like glob pattern matching. Here
+	--- order matters: if one is not detected, the other is used as fallback. You
+	--- can also delete or rearangne the detection methods.
+	-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
+	detection_methods = { "pattern" },
+
+	---@usage patterns used to detect root dir, when **"pattern"** is in detection_methods
+	patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+
+	---@ Show hidden files in telescope when searching for files in a project
+	show_hidden = false,
+
+	---@usage When set to false, you will get a message when project.nvim changes your directory.
+	-- When set to false, you will get a message when project.nvim changes your directory.
+	silent_chdir = true,
+
+	---@usage list of lsp client names to ignore when using **lsp** detection. eg: { "efm", ... }
+	ignore_lsp = {},
+
+	---@type string
+	---@usage path to store the project history for use in telescope
+	datapath = vim.fn.stdpath("data"),
+})
+
+local tele_status_ok, telescope = pcall(require, "telescope")
+if not tele_status_ok then
+	return
+end
+
+telescope.load_extension('projects')
