@@ -6,20 +6,20 @@ continuation_prompt = "[▶](bold #c4a7e7) "
 #  <-- git icon
 
 [character]
-success_symbol = "[▲](#ebbcba)"
-error_symbol = "[▲](bold #eb6f92)"
+success_symbol = "[▲](bright-purple)"
+error_symbol = "[▲](bold red)"
 # vicmd_symbol = "[](bold #c4a7e7)"
-vicmd_symbol = "[▼](bold #c4a7e7)"
+vicmd_symbol = "[▼](bold purple)"
 
 [time]
 disabled = false
 format = "[$time]($style)"
-style = "bold #9ccfd8"
+style = "bold bright-blue"
 
 [status]
 disabled = false
 format = "[$status]($style)[ < ](bold #524f67)"
-style = "bold italic #eb6f92"
+style = "bold italic bright-red"
 
 [cmd_duration]
 disabled = false
@@ -32,17 +32,17 @@ min_time = "500"
 format = "[$path]($style)[ $read_only]($read_only_style) "
 read_only = ""
 truncate_to_repo = false
-style = "#31748f"
+style = "dimmed blue"
 repo_root_style = "bold italic #6e6a86"
-read_only_style = "bold #eb6f92"
+read_only_style = "bold bright-red"
 fish_style_pwd_dir_length = 1
 truncation_length = 2
 
 [username]
 format = "[$user]($style)[@](bold #524f67)"
 show_always = true
-style_root = "bold #eb6f92"
-style_user = "#31748f"
+style_root = "bold bright-red"
+style_user = "dimmed blue"
 
 [git_status]
 format = "([{[$all_status$ahead_behind](bold italic #6e6a86)}]($style))"
@@ -59,7 +59,7 @@ command = "echo -n '!'"
 when = "sudo -vn &>/dev/null && [ \"$(whoami)\" != \"root\" ]"
 description = "prints a ! if you have sudo creds, otherwise nothing"
 shell = ["bash", "--norc", "--noprofile"]
-style = "bold italic #31748f"
+style = "bold italic dimmed blue"
 format = "[$output]($style)"
 
 [custom.gitbranch]
