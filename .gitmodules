@@ -7,3 +7,6 @@
 [submodule "pyrasevid/font"]
 	path = pyrasevid/font
 	url = https://github.com/be5invis/Iosevka
+[submodule "wallpapers/catppuccin"]
+	path = wallpapers/catppuccin
+	url = https://github.com/catppuccin/wallpapers
