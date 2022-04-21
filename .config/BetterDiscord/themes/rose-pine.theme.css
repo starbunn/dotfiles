@@ -1,0 +1,91 @@
+/**
+* @name Rose Pine
+* @author ThatOneCalculator and noobfletcher1
+* @version 1.0.0
+* @source https://github.com/rose-pine/discord
+* @website https://rosepinetheme.com
+*/
+
+.theme-dark {
+  --background-primary: #191724;
+  --background-secondary: #1f1d2e;
+  --background-secondary-alt: #26233a;
+  --channeltextarea-background: #26233a;
+  --background-tertiary: #26233a;
+  --background-accent: #ebbcba;
+  --text-normal: #e0def4;
+  --text-spotify: #9ccfd8;
+  --text-muted: #555169;
+  --text-link: #31748f;
+  --background-floating: #1f1d2e;
+  --header-primary: #e0def4;
+  --header-secondary: #9ccfd8;
+  --header-spotify: #9ccfd8;
+  --interactive-normal: #e0def4;
+  --interactive-hover: #c4a7e7;
+  --interactive-active: #e0def4;
+  --ping: #eb6f92;
+  --brand-experiment: #31748f;
+}
+
+.theme-light {
+  --background-primary: #faf4ed;
+  --background-secondary: #fffaf3;
+  --background-secondary-alt: #f2e9de;
+  --channeltextarea-background: #f2e9de;
+  --background-tertiary: #f2e9de;
+  --background-accent: #d7827e;
+  --text-normal: #575279;
+  --text-spotify: #575279;
+  --text-muted: #6e6a86;
+  --text-link: #286983;
+  --background-floating: #f2e9de;
+  --header-primary: #575279;
+  --header-secondary: #575279;
+  --header-spotify: #56949f;
+  --interactive-normal: #575279;
+  --interactive-hover: #6e6a86;
+  --interactive-active: #575279;
+  --ping: #b4637a;
+  --brand-experiment: #286983;
+}
+
+.peopleColumn-1wMU14,
+.panels-j1Uci_,
+.peopleColumn-29fq28,
+.peopleList-2VBrVI,
+.content-2hZxGK,
+.header-1zd7se,
+.root-g14mjS .small-23Atuv .fullscreenOnMobile-ixj0e3 {
+  background-color: var(--background-secondary);
+}
+
+.textArea-12jD-V,
+.lookBlank-3eh9lL,
+.threadSidebar-1o3BTy,
+.scrollableContainer-2NUZem,
+.perksModalContentWrapper-3RHugb,
+.theme-dark .footer-31IekZ,
+.theme-light .footer-31IekZ {
+  background-color: var(--background-tertiary);
+}
+
+.numberBadge-2s8kKX,
+.base-PmTxvP,
+.baseShapeRound-1Mm1YW,
+.bar-30k2ka,
+.unreadMentionsBar-1Bu1dC,
+.mention-1f5kbO,
+.active-1SSsBb,
+.disableButton-220a9y {
+  background-color: var(--ping) !important;
+}
+
+.lookOutlined-3sRXeN.colorRed-1TFJan,
+.lookOutlined-3sRXeN.colorRed-1TFJan {
+  color: var(--ping) !important;
+}
+
+::placeholder, body, button, input, select, textarea {
+    font-family: 'pyrasevid quasi', monospace !important;
+}

@@ -1,0 +1,25 @@
+{
+	"all": {
+		"changeLogs": {
+			"BDFDB": "2.3.2",
+			"CopyRawMessage": "1.1.2",
+			"DisplayServersAsChannels": "1.5.8",
+			"ImageUtilities": "4.7.1",
+			"OldTitleBar": "1.7.1",
+			"PinDMs": "1.9.1"
+		},
+		"choices": {
+			"toastPosition": "right"
+		},
+		"general": {
+			"showToasts": true,
+			"showSupportBadges": true,
+			"useChromium": false,
+			"shareData": true
+		},
+		"hashes": {
+			"0BDFDB.data.json": "e7268a45a28f93d724b71071e5b70ea13267b131",
+			"0BDFDB.raw.css": "e4c60d6c209c554731852f257457346c269a3764"
+		}
+	}
+}
