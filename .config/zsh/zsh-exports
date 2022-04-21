@@ -4,8 +4,16 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 # export PATH="$HOME/.local/bin":$PATH
 # export MANPAGER="nvim +Man!"
-export MANWIDTH=9999
+export MANPAGER="nvimpager"
+export PAGER="nvimpager"
 
-export EDITOR="code"
+man() {
+	local width=$(tput cols)
+	[ $width -gt $MANWIDTH ] && width=$MANWIDTH
+	env MANWIDTH=$width \
+	man "$@"
+}
+
+export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"

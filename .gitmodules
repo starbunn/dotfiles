@@ -10,3 +10,9 @@
 [submodule "wallpaper/catppuccin"]
 	path = wallpaper/catppuccin
 	url = https://github.com/catppuccin/wallpapers
+[submodule ".config/rofi/catppuccin"]
+	path = .config/rofi/catppuccin
+	url = https://github.com/catppuccin/rofi
+[submodule "/home/ashx/.config/spicetify/Themes/catppuccin"]
+	path = /home/ashx/.config/spicetify/Themes/catppuccin
+	url = https://github.com/catppuccin/spicetify.git

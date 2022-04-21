@@ -81,7 +81,7 @@ zsh_add_file "zsh-exports"
 zsh_add_file "zsh-fzf"
 zsh_add_file "zsh-aliases"
 zsh_add_file "inits.sh"
-source ~/.config/zsh/rose-pine-fzf/fzf.sh
+# source ~/.config/zsh/rose-pine-fzf/fzf.sh
 if [ "$TERM" = "linux" ]; then
     /bin/echo -e "
     \e]P0403c58
@@ -107,3 +107,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zsh_add_file "zsh-nvm"
+export PATH=$PATH:/home/ashx/.spicetify

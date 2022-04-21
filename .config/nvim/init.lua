@@ -287,7 +287,7 @@ opt.undofile = true
 bo.undofile = true
 
 -- zen-mode
-map('n', '<leader>zm', '<cmd>ZenMode<cr>', { silent = true })
+map('n', '<C-k>z', '<cmd>ZenMode<cr>', { silent = true })
 
 -- remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, silent = true, expr = true })
