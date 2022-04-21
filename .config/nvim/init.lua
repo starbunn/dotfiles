@@ -18,7 +18,21 @@ augroup end
 local use = require('packer').use
 require("packer").startup(function()
 
-	use 'lewis6991/impatient.nvim'
+	use {
+		'lewis6991/impatient.nvim',
+		rocks = "mpack"
+	}
+
+--	use({
+--		"nvim-lua/plenary.nvim",
+--		event = "BufRead",
+--	})
+--
+--	use({
+--		"nvim-lua/popup.nvim",
+--		after = "plenary.nvim",
+--		requires = { "nvim-lua/plenary.nvim"  },
+--	})
 
 	use "ahmedkhalf/project.nvim"
 
@@ -85,9 +99,6 @@ require("packer").startup(function()
 	-- copilot
 	use "github/copilot.vim"
 
-	-- colorscheme until i get a better one
-	use 'navarasu/onedark.nvim'
-
 	-- devcontainers
 	use 'jamestthompson3/nvim-remote-containers'
 
@@ -135,11 +146,81 @@ require("packer").startup(function()
 			require("trouble").setup()
 		end
 	}
+
+	use {
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup {}
+		end
+	}
+
+	use {
+		"folke/twilight.nvim",
+		config = function ()
+			require("twilight").setup {}
+		end
+	}
+
+	-- use 'sunjon/shade.nvim'
+	use 'andweeb/presence.nvim'
+
+	use {
+		"ur4ltz/surround.nvim",
+		config = function()
+			require("surround").setup({ mappings_style = "surround" })
+		end
+	}
+
+	use {
+		'ggandor/lightspeed.nvim',
+		requires = "tpope/vim-repeat"
+	}
+
+	use {
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require"telescope".load_extension("frecency")
+		end,
+		requires = {"tami5/sqlite.lua"}
+	}
+
+	use 'chentau/marks.nvim'
+	
+	-- colorscheme until i get a better one
+	-- use 'navarasu/onedark.nvim'
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin"
+	})
 end)
 
+-- require('shade').setup({
+-- 	overlay_opacity = 50,
+-- 	opacity_step = 1,
+-- 	keys = {
+-- 		toggle = '<Leader>s',
+-- 	}
+-- })
 
-require 'impatient'
+require('presence'):setup({
+	auto_update = true,
+	neovim_image_text = "webcoredreams",
+	main_image = "neovim",
+	log_level = nil,
+	debounce_timeout = 10,
+	enable_line_number = false,
+	blacklist = {},
+	buttons = true,
+	file_assets = {},
 
+	editing_text = "editing %s",
+	file_explorer_text = "exploring %s",
+	git_commit_text = "commiting shit",
+	plugin_manager_text = "managing plugin shit",
+	reading_text = "viewing read-only file %s",
+	workspace_text = "working on git project %s",
+	line_number_text = "if i have this on yell at me"
+})
 
 local opt = vim.opt -- global
 local g   = vim.g -- global for let options
@@ -205,13 +286,15 @@ opt.completeopt = "menu,menuone,noselect"
 opt.undofile = true
 bo.undofile = true
 
+-- zen-mode
+map('n', '<leader>zm', '<cmd>ZenMode<cr>', { silent = true })
 
 -- remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, silent = true, expr = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, silent = true, expr = true })
 
 -- remap space as leader key
-vim.keymap.set({ 'n', 'v' }, '<Space>', 'Nop', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 g.mapleader = ' '
 g.maplocalleader = ' '
 
@@ -317,6 +400,17 @@ g.indent_blankline_char = '┊'
 g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 g.indent_buftype_exclude = { 'terminal', 'nofile' }
 g.indent_blankline_show_trailing_blankline_indent = false
+require('indent_blankline').setup {
+	space_char_blankline = " ",
+	char_highlight_list = {
+		"IndentBlanklineIndent1",
+		"IndentBlanklineIndent2",
+		"IndentBlanklineIndent3",
+		"IndentBlanklineIndent4",
+		"IndentBlanklineIndent5",
+		"IndentBlanklineIndent6",
+	}
+}
 
 -- bufferline
 require("bufferline").setup {
@@ -497,6 +591,7 @@ local servers = {
 	"clangd",
 	"vimls",
 	"emmet_ls",
+	"gopls"
 }
 
 for _, name in pairs(servers) do
@@ -542,8 +637,8 @@ local on_attach = function(_, bufnr)
 
 	-- Doc popup scrolling
 	buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-	buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.hover').smart_scroll_with_saga(1)<CR>", opts)
-	buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.hover').smart_scroll_with_saga(-1)<CR>", opts)
+	buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+	buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 
 	-- codeaction
 	buf_set_keymap('n', '<leader>la', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
@@ -730,20 +825,23 @@ g.autopairs = {
 }
 
 -- colorscheme, later.
-require("onedark").setup({
-	style = "darker",
-})
-require("onedark").load()
+-- require("onedark").setup({
+-- 	style = "darker",
+-- })
+-- require("onedark").load()
 
 -- status bar
 
 require('lualine').setup({
-	sections = {
-		lualine_c = {
-			{ 'filename', path = 1 },
-			'lsp_progress'
-		},
-	},
+	-- sections = {
+	-- 	lualine_c = {
+	-- 		{ 'filename', path = 1 },
+	-- 		'lsp_progress'
+	-- 	},
+	-- },
+	options = {
+		theme = "catppuccin"
+	}
 })
 
 require('nvim-treesitter.configs').setup {
@@ -791,7 +889,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
-	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+	dashboard.button("r", "  Recently used files", ":Telescope frecency <CR>"),
 	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
 	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
 	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
@@ -865,3 +963,123 @@ if not tele_status_ok then
 end
 
 telescope.load_extension('projects')
+
+vim.cmd [[set laststatus=3]]
+
+require('marks').setup({
+	default_mappings = true,
+	builtin_marks = { ".", "<", ">", "^" },
+	cyclic = true,
+	force_write_shada = false,
+	refresh_interval = 250,
+	sign_priority = { lower=10, upper=15, builtin=8, bookmark=20 },
+	excluded_filetypes = {},
+	bookmark_0 = {
+		sign = "⚑",
+		virt_text = "BM 1"
+	},
+	bookmark_1 = {
+		sign = "⚑",
+		virt_text = "BM 2"
+	},
+	bookmark_2 = {
+		sign = "⚑",
+		virt_text = "BM 3"
+	},
+	bookmark_3 = {
+		sign = "⚑",
+		virt_text = "BM 4"
+	},
+	bookmark_4 = {
+		sign = "⚑",
+		virt_text = "BM 5"
+	},
+	bookmark_5 = {
+		sign = "⚑",
+		virt_text = "BM 6"
+	},
+	bookmark_6 = {
+		sign = "⚑",
+
+		virt_text = "BM 7"
+	},
+	bookmark_7 = {
+		sign = "⚑",
+		virt_text = "BM 8"
+	},
+	bookmark_8 = {
+		sign = "⚑",
+		virt_text = "BM 9"
+	},
+	bookmark_9 = {
+		sign = "⚑",
+		virt_text = "BM 10"
+	},
+})
+
+local catp = require("catppuccin")
+
+catp.setup({
+	transparent_background = false,
+	term_colors = false,
+	styles = {
+		comments = "italic",
+		functions = "italic",
+		keywords = "italic",
+		strings = "NONE",
+		variables = "italic",
+	},
+	integrations = {
+		treesitter = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = "italic",
+				hints = "italic",
+				warnings = "italic",
+				information = "italic",
+			},
+			underlines = {
+				errors = "underline",
+				hints = "underline",
+				warnings = "underline",
+				information = "underline",
+			},
+		},
+		lsp_trouble = true,
+		cmp = true,
+		lsp_saga = false,
+		gitgutter = false,
+		gitsigns = true,
+		telescope = true,
+		nvimtree = {
+			enabled = true,
+			show_root = false,
+			transparent_panel = false,
+		},
+		neotree = {
+			enabled = false,
+			show_root = false,
+			transparent_panel = false,
+		},
+		which_key = false,
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = true,
+		},
+		dashboard = true,
+		neogit = false,
+		vim_sneak = false,
+		fern = false,
+		barbar = false,
+		bufferline = true,
+		markdown = true,
+		lightspeed = true,
+		ts_rainbow = false,
+		hop = false,
+		notify = true,
+		telekasten = true,
+		symbols_outline = true,
+	}
+})
+catp.load()
