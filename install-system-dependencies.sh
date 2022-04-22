@@ -4,7 +4,7 @@
 
 paru -Syy
 paru -Syu
-paru -S nvimpager zsh neovim httpie bat fzf fd ripgrep starship kitty firefox tmux exa nvm git zoxide openssh
+paru -S nvimpager zsh neovim httpie bat fzf fd ripgrep starship kitty firefox tmux exa nvm git zoxide openssh shellcheck jq
 
 
 paru -S snapd
