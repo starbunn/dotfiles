@@ -1,3 +1,4 @@
 ::placeholder, body, button, input, select, textarea {
-    font-family: 'pyrasevid quasi', monospace !important;
+    font-family: 'pyrasevid', monospace !important;
+    font-weight: "500"
 }
