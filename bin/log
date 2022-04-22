@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if [ "$1" == "read" ]; then
-  tail -f $2 | bat --paging=never -l log
+if [ "$1" = "read" ]; then
+  tail -f "$2" | bat --paging=never -l log
 fi
 
-if [ "$1" == "write" ]; then
-  echo "[$(date '+%Y-%m-%d %H:%M:%S %z')] [$4] $3" >> $2
-  tail -n 1 $2 | bat --paging=never -l log --style=changes
+if [ "$1" = "write" ]; then
+  echo "[$(date '+%Y-%m-%d %H:%M:%S %z')] [$4] $3" >> "$2"
+  tail -n 1 "$2" | bat --paging=never -l log --style=changes
 fi
 
 # tail -f /var/log/pacman.log | bat --paging=never -l log
