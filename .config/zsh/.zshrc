@@ -36,7 +36,8 @@ fi
 
 [ "$(which bat)" ] && export BAT_THEME="Nord" && export MANPAGER="sh -c 'col -bx | bat --theme Nord -l man -p'"
 
-[ "$(which nvm)" ] && source /usr/share/nvm/init-nvm.sh
+# [ "$(which nvm)" ] && source /usr/share/nvm/init-nvm.sh
+. /opt/asdf-vm/asdf.sh
 [ -f "$HOME/bin/log" ] && alias log='~/bin/log'
 
 ### Added by Zinit's installer
@@ -106,5 +107,5 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-zsh_add_file "zsh-nvm"
+# zsh_add_file "zsh-nvm"
 export PATH=$PATH:/home/ashx/.spicetify
