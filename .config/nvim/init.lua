@@ -286,6 +286,12 @@ opt.completeopt = "menu,menuone,noselect"
 opt.undofile = true
 bo.undofile = true
 
+-- tab
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.expandtab = true
+
 -- zen-mode
 map('n', '<C-k>z', '<cmd>ZenMode<cr>', { silent = true })
 
