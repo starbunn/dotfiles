@@ -17,9 +17,9 @@ bindkey -v '^?' backward-delete-char
 #     esac
 # }
 # zle -N zle-keymap-select
-# zle-line-init() {
-#     zle -K viins # initiate 'vi insert' as keymap (can be removed if 'bindkey -V' is set elsewhere)
-#     echo -ne '\e[5 q' # beam cursor
-# }
-# zle -N zle-line-init
+zle-line-init() {
+    zle -K viins # initiate 'vi insert' as keymap (can be removed if 'bindkey -V' is set elsewhere)
+    echo -ne '\e[5 q' # beam cursor
+}
+zle -N zle-line-init
 echo -ne '\e[5 q' # beam cursor
