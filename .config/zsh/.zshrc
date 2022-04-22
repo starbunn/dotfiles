@@ -1,7 +1,7 @@
 #!/bin/sh
 export ZDOTDIR=$HOME/.config/zsh
 pfetch
-lolcat lolcatheader
+lolcat <(echo 'dreams')
 cat $ZDOTDIR/shellheader
 setopt appendhistory
 setopt inc_append_history
