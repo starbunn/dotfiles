@@ -5,6 +5,7 @@
 paru -Syy
 paru -Syu
 paru -S nvimpager zsh neovim httpie bat fzf fd ripgrep starship kitty firefox tmux exa git zoxide openssh shellcheck jq curl git asdf-vm
+paru -Syyu lightly-qt
 
 
 paru -S snapd
