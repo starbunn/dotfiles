@@ -5,7 +5,7 @@ alias owo="sudo"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-
+alias c="clear"
 alias mkdir="mkdir -pv"
 
 src() {
