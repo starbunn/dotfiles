@@ -103,7 +103,8 @@ require("packer").startup(function()
 	use 'jamestthompson3/nvim-remote-containers'
 
 	-- git
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use { 'tpope/vim-fugitive', requires = 'nvim-lua/plenary.nvim' }
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
 	-- comment
@@ -307,7 +308,8 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 -- neogit
-map('n', '<leader>gs', '<cmd>Neogit<cr>', { silent = true })
+map('n', '<leader>gs', '<cmd>G<cr>', { silent = true })
+map('n', '<leader>gh', '<cmd>DiffviewFileHistory<cr>', { silent = true })
 
 -- clear highlight
 map('n', '<leader>h', '<cmd>nohl<cr>', { silent = true })
@@ -1079,7 +1081,7 @@ catp.setup({
 			colored_indent_levels = true,
 		},
 		dashboard = true,
-		neogit = true,
+		neogit = false,
 		vim_sneak = false,
 		fern = false,
 		barbar = false,
@@ -1206,16 +1208,16 @@ require'diffview'.setup {
   },
 }
 
-local neogit = require("neogit")
-
-neogit.setup {
-  kind = "tab",
-  integrations = {
-    diffview = true
-  },
-  mappings = {
-    status = {
-      ["B"] = "BranchPopup",
-    }
-  }
-}
+-- local neogit = require("neogit")
+--
+-- neogit.setup {
+--   kind = "tab",
+--   integrations = {
+--     diffview = true
+--   },
+--   mappings = {
+--     status = {
+--       ["B"] = "BranchPopup",
+--     }
+--   }
+-- }
