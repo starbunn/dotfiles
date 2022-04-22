@@ -104,6 +104,7 @@ require("packer").startup(function()
 
 	-- git
 	use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
 
 	-- comment
 	use 'numToStr/Comment.nvim'
