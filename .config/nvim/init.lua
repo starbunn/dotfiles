@@ -103,7 +103,7 @@ require("packer").startup(function()
 	use 'jamestthompson3/nvim-remote-containers'
 
 	-- git
-    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use { 'tpope/vim-fugitive', requires = 'nvim-lua/plenary.nvim' }
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
@@ -308,7 +308,7 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 -- neogit
-map('n', '<leader>gs', '<cmd>G<cr>', { silent = true })
+map('n', '<leader>gs', '<cmd>Neogit<cr>', { silent = true })
 map('n', '<leader>gh', '<cmd>DiffviewFileHistory<cr>', { silent = true })
 
 -- clear highlight
@@ -1208,16 +1208,34 @@ require'diffview'.setup {
   },
 }
 
--- local neogit = require("neogit")
---
--- neogit.setup {
---   kind = "tab",
---   integrations = {
---     diffview = true
---   },
---   mappings = {
---     status = {
---       ["B"] = "BranchPopup",
---     }
---   }
--- }
+require('neogit').setup {
+    disable_signs = false,
+    disable_hint = true,
+    disable_context_highlighting = false,
+    status = {
+      recent_commit_count = 10,
+    },
+    -- customize displayed signs
+    signs = {
+      -- { CLOSED, OPENED }
+      section = { "", "" },
+      item = { "", "" },
+      hunk = { "", "" },
+    },
+    integrations = {
+      diffview = true
+    },
+    sections = {
+      recent = {
+        folded = false,
+      },
+    },
+    -- override/add mappings
+    mappings = {
+      -- modify status buffer mappings
+      status = {
+        -- Adds a mapping with "B" as key that does the "BranchPopup" command
+        ["B"] = "BranchPopup",
+      }
+    }
+  }
