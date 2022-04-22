@@ -1,5 +1,6 @@
 #!/bin/sh
 export ZDOTDIR=$HOME/.config/zsh
+pfetch
 cat $ZDOTDIR/shellheader
 setopt appendhistory
 setopt inc_append_history
