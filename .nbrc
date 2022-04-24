@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+###############################################################################
+# .nbrc
+#
+# Configuration file for `nb`, a command line note-taking, bookmarking,
+# and knowledge base application with encryption, search, Git-backed syncing,
+# and more in a single portable script.
+#
+# Edit this file manually or manage settings using the `nb settings`
+# subcommand. Configuration options are set as environment variables, eg:
+#   export NB_ENCRYPTION_TOOL=gpg
+#
+# https://github.com/xwmx/nb
+###############################################################################
+
+export EDITOR="nvim" # Set by `nb` • Sat Apr 23 05:43:13 PM EDT 2022
+
+export NB_AUTO_SYNC="${NB_AUTO_SYNC:-1}" # Set by `nb` • Sat Apr 23 05:43:34 PM EDT 2022
+
+
+export NB_DEFAULT_EXTENSION="${NB_DEFAULT_EXTENSION:-md}" # Set by `nb` • Sat Apr 23 05:44:09 PM EDT 2022
+
+export NB_DIR="${NB_DIR:-/home/ashx/notes/notebooks}" # Set by `nb` • Sat Apr 23 05:44:51 PM EDT 2022
+
+export NB_HEADER="${NB_HEADER:-2}" # Set by `nb` • Sat Apr 23 05:45:36 PM EDT 2022
+
+export NB_FOOTER="${NB_FOOTER:-1}" # Set by `nb` • Sat Apr 23 05:45:46 PM EDT 2022
+
+
+
+export NB_COLOR_PRIMARY="${NB_COLOR_PRIMARY:-1}" # Set by `nb` • Sat Apr 23 11:14:47 PM EDT 2022
+
+export NB_COLOR_SECONDARY="${NB_COLOR_SECONDARY:-239}" # Set by `nb` • Sat Apr 23 11:16:19 PM EDT 2022
+
+export NB_SYNTAX_THEME="${NB_SYNTAX_THEME:-Nord}" # Set by `nb` • Sat Apr 23 11:16:45 PM EDT 2022
+
+export NB_COLOR_THEME="${NB_COLOR_THEME:-catppuccin}" # Set by `nb` • Sat Apr 23 11:25:53 PM EDT 2022
