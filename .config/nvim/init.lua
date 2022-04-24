@@ -103,7 +103,13 @@ require("packer").startup(function()
 	use 'jamestthompson3/nvim-remote-containers'
 
 	-- git
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use {
+      'TimUntersberger/neogit',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'sindrets/diffview.nvim'
+      }
+    }
     use { 'tpope/vim-fugitive', requires = 'nvim-lua/plenary.nvim' }
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
@@ -1081,7 +1087,7 @@ catp.setup({
 			colored_indent_levels = true,
 		},
 		dashboard = true,
-		neogit = false,
+		neogit = true,
 		vim_sneak = false,
 		fern = false,
 		barbar = false,
@@ -1106,7 +1112,7 @@ local cb = require'diffview.config'.diffview_callback
 
 require'diffview'.setup {
   diff_binaries = false,    -- Show diffs for binaries
-  enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
+  enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
   use_icons = true,         -- Requires nvim-web-devicons
   icons = {                 -- Only applies when use_icons is true.
     folder_closed = "",
