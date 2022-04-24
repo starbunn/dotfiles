@@ -7,13 +7,13 @@ alias vi="nvim"
 alias v="nvim"
 alias c="clear"
 alias mkdir="mkdir -pv"
-[[ "$(which nb)" ]] && alias notes="nb"
 
 src() {
     cd "$($ZDOTDIR/src $@)"
 }
 
 alias dots="/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME"
+alias lazydots="lazygit -w $HOME -g $HOME/dotfiles.git"
 
 zconf() {
     vim $ZDOTDIR/$1
