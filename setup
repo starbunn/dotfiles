@@ -1,2 +1,5 @@
 #!/bin/sh
 source ~/.config/setup/*.sh
+for i in ~/.config/setup/*.sh; do
+    source $i
+done
