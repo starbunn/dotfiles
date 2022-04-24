@@ -2,7 +2,7 @@
 	"all": {
 		"changeLogs": {
 			"BDFDB": "2.3.2",
-			"CopyRawMessage": "1.1.2",
+			"CopyRawMessage": "1.1.3",
 			"DisplayServersAsChannels": "1.5.8",
 			"ImageUtilities": "4.7.1",
 			"OldTitleBar": "1.7.1",
@@ -18,7 +18,7 @@
 			"shareData": true
 		},
 		"hashes": {
-			"0BDFDB.data.json": "c85e4f4c63ebc3485adc6870c59743da389a4135",
+			"0BDFDB.data.json": "2a36abf88a44c84746b37f1816e90e30fa4b88ca",
 			"0BDFDB.raw.css": "2ebea7039d9e1cec337217c34a3382e7001aae1f"
 		}
 	}

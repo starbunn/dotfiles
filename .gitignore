@@ -2,3 +2,5 @@ nvim/plugged
 /dotfiles.git
 /.config/gh/hosts.yml
 /.config/zsh/zsh-history
+
+.config/zsh/zsh-history
