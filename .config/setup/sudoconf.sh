@@ -1,1 +1,1 @@
-sudo cp -rf ~/.config/setup/sudoconf /etc/sudoers
+sudo cp -rf sudoconf /etc/sudoers
