@@ -1,3 +1,6 @@
 #!/bin/sh
-SESSION="vscode`pwd | md5`"
+# this file is used as my integrated terminal in vscode, and it allows me to use tmux sessions in vscode.
+# it creates the sessions based on a syntax of [vscode-(pwd with slashes replaced with dashes)]
+# PREFIX+s can be used to switch between these sessions as well, allow for easy access to specific sessions whenever I want.
+SESSION="vscode`pwd | sed 's/\//-/g'`"
 tmux attach-session -d -t $SESSION || tmux new-session -s $SESSION
