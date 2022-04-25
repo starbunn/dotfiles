@@ -16,6 +16,6 @@ man() {
 	man "$@"
 }
 
-export EDITOR="nvim"
+export EDITOR="code"
 export TERMINAL="kitty"
 export BROWSER="firefox"
