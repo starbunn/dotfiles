@@ -18,15 +18,15 @@ scrolling:
 
 font:
   normal:
-    family: pyrasevid-alacritty
+    family: sbunst
   bold:
-    family: pyrasevid-alacritty
+    family: sbunst
     style: Heavy
   italic:
-    family: pyrasevid-alacritty
+    family: sbunst
     style: Italic
   bold_italic:
-    family: pyrasevid-alacritty
+    family: sbunst
     style: Heavy Italic
 
   size: 14.0
