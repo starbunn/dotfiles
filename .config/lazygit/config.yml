@@ -1,0 +1,8 @@
+os:
+  openCommand: 'code -rg  {{filename}}'
+customCommands:
+  - key: '<c-w>'
+    context: 'localBranches'
+    description: 'pulls and pushes all branches'
+    command: 'git pull --all && git push --all'
+    loadingText: 'Syncing...'
