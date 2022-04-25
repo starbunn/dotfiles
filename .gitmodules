@@ -16,3 +16,6 @@
 [submodule "/home/ashx/.config/spicetify/Themes/catppuccin"]
 	path = /home/ashx/.config/spicetify/Themes/catppuccin
 	url = https://github.com/catppuccin/spicetify.git
+[submodule "bunni/iosevka"]
+	path = bunni/iosevka
+	url = https://github.com/be5invis/Iosevka
