@@ -8,5 +8,5 @@ tmux new-window -t notes:2
 tmux split-window -t notes:1 -v
 tmux send-keys -t notes:1.0 'clear' Enter
 tmux send-keys -t notes:1.1 'while true; do clear && nb && sleep 0.5; done' Enter
-tmux rename-window -t notes:1 'notes'
+tmux rename-window -t notes:1 'private'
 tmux a -t notes
