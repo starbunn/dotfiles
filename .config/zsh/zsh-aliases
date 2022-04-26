@@ -12,6 +12,10 @@ src() {
     cd "$($ZDOTDIR/src $@)"
 }
 
+find() {
+    pushd /; { fd . | rg $@ | $PAGER }; popd
+}
+
 alias dots="/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME"
 alias lazydots="lazygit -w $HOME -g $HOME/dotfiles.git"
 
