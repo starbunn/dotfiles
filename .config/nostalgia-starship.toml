@@ -1,0 +1,72 @@
+add_newline = false
+format = "$directory${custom.gitbranch}$git_status\n$character"
+right_format = "${custom.sudo}[|](bold #524f67) $status$cmd_duration$username$time"
+continuation_prompt = "[▶](bold #c4a7e7) "
+#  <-- folder icon
+#  <-- git icon
+
+[character]
+success_symbol = "[▲](bright-purple)"
+error_symbol = "[▲](bold red)"
+# vicmd_symbol = "[](bold #c4a7e7)"
+vicmd_symbol = "[▼](bold purple)"
+
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "bold bright-blue"
+
+[status]
+disabled = false
+format = "[$status]($style)[ < ](bold #524f67)"
+style = "bold italic bright-red"
+
+[cmd_duration]
+disabled = false
+format = "[$duration]($style)[ < ](bold #524f67)"
+show_milliseconds = true
+style = "bold italic #ebbcba"
+min_time = "500"
+
+[directory]
+format = "[$path]($style)[ $read_only]($read_only_style) "
+read_only = ""
+truncate_to_repo = false
+style = "dimmed blue"
+repo_root_style = "bold italic #6e6a86"
+read_only_style = "bold bright-red"
+fish_style_pwd_dir_length = 1
+truncation_length = 2
+
+[username]
+format = "[$user]($style)[@](bold #524f67)"
+show_always = true
+style_root = "bold bright-red"
+style_user = "dimmed blue"
+
+[git_status]
+format = "([{[$all_status$ahead_behind](bold italic #6e6a86)}]($style))"
+modified = "M"
+renamed = "R"
+conflicted = "≠"
+deleted = ""
+staged = "+"
+untracked = "?"
+style = 'bold #6e6a86'
+
+[custom.sudo]
+command = "echo -n '!'"
+when = "sudo -vn &>/dev/null && [ \"$(whoami)\" != \"root\" ]"
+description = "prints a ! if you have sudo creds, otherwise nothing"
+shell = ["bash", "--norc", "--noprofile"]
+style = "bold italic dimmed blue"
+format = "[$output]($style)"
+
+[custom.gitbranch]
+command = "echo -n \"$(git branch --show-current)\""
+when = "git rev-parse --is-inside-work-tree &>/dev/null"
+description = "shows git branch if you are in a git repo"
+shell = ["bash", "--norc", "--noprofile"]
+style = "#6e6a86"
+# (branch in folder) format = " [$output](bold $style)[ in ]($style)"
+format = "[$output](bold italic $style)"
