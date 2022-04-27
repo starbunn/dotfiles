@@ -19,7 +19,6 @@ export NB_AUTO_SYNC="${NB_AUTO_SYNC:-1}" # Set by `nb` • Sat Apr 23 05:43:34 P
 
 export NB_DEFAULT_EXTENSION="${NB_DEFAULT_EXTENSION:-md}" # Set by `nb` • Sat Apr 23 05:44:09 PM EDT 2022
 
-export NB_DIR="${NB_DIR:-/home/ashx/notes/notebooks}" # Set by `nb` • Sat Apr 23 05:44:51 PM EDT 2022
 
 export NB_HEADER="${NB_HEADER:-2}" # Set by `nb` • Sat Apr 23 05:45:36 PM EDT 2022
 
@@ -38,3 +37,5 @@ export NB_COLOR_THEME="${NB_COLOR_THEME:-catppuccin}" # Set by `nb` • Sat Apr 
 export NB_ACE_ENABLED=1
 
 export EDITOR="code" # Set by `nb` • Sun Apr 24 11:12:09 PM EDT 2022
+
+export NB_DIR="${NB_DIR:-/home/ashe/notes/notebooks}" # Set by `nb` • Tue Apr 26 08:52:28 PM EDT 2022
