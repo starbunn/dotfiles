@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ~/pkgs
+rm -rf pkgs
+paru -Q > pkgs
