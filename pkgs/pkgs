@@ -70,6 +70,8 @@ cblas 3.10.1-1
 cdparanoia 10.2-8
 chromaprint 1.5.1-3
 cifs-utils 6.14-1
+clipmenu 6.2.0-2
+clipnotify 1.0.2-2
 cmake 3.23.1-1
 cmatrix 2.0-2
 cni-plugins 1.1.1-1
@@ -95,6 +97,7 @@ discord 0.0.17-1
 discord-ptb 0.0.29-2
 discount 2.2.7-2
 discover 5.24.4-1
+dmenu 5.1-1
 dmraid 1.0.0.rc16.3-13
 dnssec-anchors 20190629-3
 docbook-xml 4.5-9
@@ -934,7 +937,6 @@ pfetch 0.6.0-3
 phonon-qt5 4.11.1-3
 phonon-qt5-gstreamer 4.10.0-3
 php 8.1.5-2
-picom-jonaburg-git 0.1-5
 pinentry 1.2.0-1
 pipewire 1:0.3.50-1
 pipewire-media-session 1:0.4.1-1
@@ -1159,6 +1161,7 @@ taglib 1.12-1
 talloc 2.3.3-3
 tar 1.34-1
 tdb 1.4.6-1
+termius 7.37.2-1
 tevent 1:0.11.0-3
 texinfo 6.8-2
 thefuck 3.32-1

@@ -1,0 +1,68 @@
+#! /bin/sh
+##  /\\\
+##  \/\\\
+##   \/\\\                       /\\\\\\\\\
+##    \/\\\         /\\\\\\\\\\  /\\\/////\\\  /\\    /\\   /\\    /\\\\\  /\\\\\    /\\/\\\\\\\      /\\\\\\\\
+##     \/\\\\\\\\\  \/\\\//////  \/\\\\\\\\\\  \/\\\  /\\\\ /\\\  /\\\///\\\\\///\\\ \/\\\/////\\\   /\\\//////
+##      \/\\\////\\\ \/\\\\\\\\\\ \/\\\//////   \//\\\/\\\\\/\\\  \/\\\ \//\\\  \/\\\ \/\\\   \///   /\\\
+##	     \/\\\  \/\\\ \////////\\\ \/\\\          \//\\\\\/\\\\\   \/\\\  \/\\\  \/\\\ \/\\\         \//\\\
+##        \/\\\\\\\\\   /\\\\\\\\\\ \/\\\           \//\\\\//\\\    \/\\\  \/\\\  \/\\\ \/\\\          \///\\\\\\\\
+##         \/////////   \//////////  \///             \///  \///     \///   \///   \///  \///             \////////
+##
+### AUTOSTART ###
+nitrogen --restore &
+pgrep -x sxhkd > /dev/null || sxhkd &
+picom --log-file /var/log/picom/picom.log --experimental-backend &
+# figure out what -> is # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# ~/.config/polybar/launch.sh &
+# /usr/bin/wired &
+clipmenud &
+
+## CURSOR ##
+xsetroot -cursor_name left_ptr
+# ~/bin/fixmouse &
+
+## MONITORS
+
+# MAIN & SECOND XRANDR CONFIG #
+xrandr --output DP-2 --primary --mode 2560x1440 --rate 165 --output DP-4 --mode 1920x1080 --rate 120 --left-of DP-2 &
+
+# WORKSPACES #
+bspc monitor -d DP-2 I II III IV V
+bspc monitor -d DP-4 VI VII VIII IX X
+
+## COLORS ##
+bspc config normal_border_color   "#1e1e2e"
+bspc config focused_border_color  "#c9cbff"
+bspc config active_border_color   "#jbe9b3"
+bspc config presel_feedback_color "#e8a2af"
+
+## RULES ##
+# example: bspc rule -a Firefox state=floating follow=on desktop='^5'
+bspc rule -a Nitrogen           state=floating
+bspc rule -a vlc                state=floating
+bspc rule -a wine               state=floating
+bspc rule -a "golden apple.exe" state=floating
+bspc rule -a lunarclient        state=floating
+
+## BORDERS ##
+bspc config border_width 2
+bspc config window_gap   12
+
+## OTHER SHIT ##
+bspc config split_ratio  0.52
+
+## POINTER ACTIONS ##
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+bspc config focus_follows_pointer true
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
