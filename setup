@@ -1,5 +1,5 @@
 #!/bin/sh
-source ~/.config/setup/*.sh
+source ~/pkgs/install
 for i in ~/.config/setup/*.sh; do
     source $i
 done
