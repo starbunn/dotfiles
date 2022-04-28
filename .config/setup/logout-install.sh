@@ -1,1 +1,1 @@
-sudo mv logout /usr/bin
+sudo cp logout /usr/bin
