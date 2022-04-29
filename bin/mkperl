@@ -5,7 +5,6 @@ use warnings;
 use Getopt::Long;
 
 my $newfile = $ARGV[0] ? $ARGV[0] : 'default-name.pl';
-$newfile =~ s/.pl// if $noextension;
 
 open my $fh, '>>', $newfile or die "Can't open $newfile: $_";
 system("chmod 755 $newfile");
