@@ -14,7 +14,7 @@ nitrogen --restore &
 pgrep -x sxhkd > /dev/null || sxhkd &
 picom --log-file /var/log/picom/picom.log --experimental-backend &
 # figure out what -> is # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# ~/.config/polybar/launch.sh &
+~/.config/polybar/launch.sh &
 # /usr/bin/wired &
 flameshot &
 clipmenud &
