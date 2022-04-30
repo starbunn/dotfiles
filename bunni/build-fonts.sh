@@ -1,5 +1,6 @@
 #!/bin/zsh
-cp ./bunni.toml ./iosevka/private-build-plans.toml
+BUILDPLAN=$1
+cp ./$BUILDPLAN ./iosevka/private-build-plans.toml
 cd iosevka
 npm install
 {
