@@ -12,7 +12,6 @@ print $fh "#!/usr/bin/perl
 use strict;
 use warnings;
 
-
 ";
 
 close $fh or die "Cant close file $newfile: $_";
