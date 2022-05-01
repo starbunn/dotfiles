@@ -14,7 +14,7 @@ nitrogen --restore &
 pgrep -x sxhkd > /dev/null || sxhkd &
 picom --log-file ~/picom.log &
 # figure out what -> is # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# /usr/bin/wired &
+/usr/bin/wired &
 flameshot &
 clipmenud &
 
@@ -58,8 +58,8 @@ bspc rule -a Alacritty          desktop='2' focus=on
 bspc rule -a firefox         desktop='3' focus=on
 
 ## BORDERS ##
-bspc config border_width 2
-bspc config window_gap   12
+bspc config border_width 3
+bspc config window_gap   16
 
 ## OTHER SHIT ##
 bspc config split_ratio  0.52
