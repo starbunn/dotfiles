@@ -22,3 +22,6 @@
 [submodule ".rofi-power-menu"]
 	path = .rofi-power-menu
 	url = https://github.com/jluttine/rofi-power-menu
+[submodule ".config/cheat/cheatsheets/community"]
+	path = .config/cheat/cheatsheets/community
+	url = https://github.com/cheat/cheatsheets
