@@ -1,0 +1,4 @@
+41c41
+< actions[lockscreen]="lockscreen"
+---
+> actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"

@@ -24,8 +24,8 @@ super + @space
 	rofi -show drun -font "bunni 12"
 
 # power menu
-super + l
-    rofi -show p -modi p:$HOME/.rofi-power-menu/rofi-power-menu
+alt + l
+    rofi -show p -modi p:power-menu
 
 # clipmenu
 super + c
