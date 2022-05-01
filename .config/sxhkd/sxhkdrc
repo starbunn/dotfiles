@@ -23,9 +23,13 @@ alt + Escape
 super + @space
 	rofi -show drun -font "bunni 12"
 
-# power menu
+# lockscreen
 alt + l
-    rofi -show p -modi p:power-menu
+    lockscreen
+
+# powermenu
+alt + p
+   rofi -show p -modi "p:power-menu --choices=logout/suspend/hibernate/reboot/shutdown" -location 3 -yoffset 24 
 
 # clipmenu
 super + c
@@ -78,6 +82,9 @@ alt + c; c
 # neovide
 alt + c; n
 	neovide
+# vscode workspaces
+alt + c; w
+    rofi-code
 
 ## WEB/SOCIAL ##
 
