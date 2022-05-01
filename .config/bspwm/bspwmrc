@@ -12,9 +12,8 @@
 ### AUTOSTART ###
 nitrogen --restore &
 pgrep -x sxhkd > /dev/null || sxhkd &
-picom --log-file /var/log/picom/picom.log --experimental-backend &
+picom --log-file ~/picom.log &
 # figure out what -> is # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-~/.config/polybar/launch.sh &
 # /usr/bin/wired &
 flameshot &
 clipmenud &
@@ -29,8 +28,16 @@ xsetroot -cursor_name left_ptr
 xrandr --output DP-2 --primary --mode 2560x1440 --rate 165 --output DP-4 --mode 1920x1080 --rate 120 --left-of DP-2 &
 
 # WORKSPACES #
-bspc monitor -d DP-2 I II III IV V
-bspc monitor -d DP-4 VI VII VIII IX X
+start_from=1
+monitors_connected=$(bspc query -M | wc -l)
+per_monitor=$(( 10 / monitors_connected ))
+for monitor in $(bspc query -M | tac); do
+    bspc monitor $monitor -d $(seq $start_from $(( start_from + per_monitor - 1)))
+    start_from=$((start_from + per_monitor))
+done
+
+# POLYBAR #
+~/.config/polybar/launch.sh &
 
 ## COLORS ##
 bspc config normal_border_color   "#1e1e2e"
@@ -41,10 +48,14 @@ bspc config presel_feedback_color "#e8a2af"
 ## RULES ##
 # example: bspc rule -a Firefox state=floating follow=on desktop='^5'
 bspc rule -a Nitrogen           state=floating
-bspc rule -a vlc                state=floating
-bspc rule -a wine               state=floating
-bspc rule -a "golden apple.exe" state=floating
-bspc rule -a lunarclient        state=floating
+bspc rule -a vlc                state=floating desktop='4' follow=on
+bspc rule -a wine               state=floating desktop='5'
+bspc rule -a "golden apple.exe" state=floating desktop='5'
+bspc rule -a lunarclient        state=floating desktop='5'
+bspc rule -a Steam              state=floating desktop='5' follow=on
+bspc rule -a Code               desktop='1' focus=on
+bspc rule -a Alacritty          desktop='2' focus=on
+bspc rule -a firefox         desktop='3' focus=on
 
 ## BORDERS ##
 bspc config border_width 2

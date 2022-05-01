@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my $uptime = `uptime -p`;
+$uptime =~ s/up //;
+$uptime =~ s/\ years?,/y/;
+$uptime =~ s/\ weeks?,/w/;
+$uptime =~ s/\ days?,/d/;
+$uptime =~ s/\ hours?,?/h/;
+$uptime =~ s/\ minutes?/m/;
+print " " . $uptime;

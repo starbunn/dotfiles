@@ -23,6 +23,10 @@ alt + Escape
 super + @space
 	rofi -show drun -font "bunni 12"
 
+# power menu
+super + l
+    rofi -show p -modi p:$HOME/.rofi-power-menu/rofi-power-menu
+
 # clipmenu
 super + c
     CM_LAUNCHER=rofi clipmenu -font "bunni 12"
@@ -181,7 +185,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '{1-9,10}'
 
 ## PRESELECT ##
 
