@@ -29,7 +29,7 @@ alt + l
 
 # powermenu
 alt + p
-   rofi -show p -modi "p:power-menu --choices=logout/suspend/hibernate/reboot/shutdown" -location 3 -yoffset 24 
+   rofi -show p -modi "p:power-menu --choices=logout/suspend/hibernate/reboot/shutdown"
 
 # clipmenu
 super + c
