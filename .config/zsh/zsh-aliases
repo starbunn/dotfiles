@@ -26,7 +26,8 @@ zconf() {
 
 alias zrc="zconf .zshrc"
 
-alias listpackages="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias listpackages="paru -Qq | fzf --preview 'paru -Qil {}' --layout=reverse --bind 'enter:execute(paru -Qil {} | less)'"
+alias updatepackages="paru -Syy && paru -Syu"
 
 if [ "$(which exa)" ]; then
     alias l="exa -a --icons"
