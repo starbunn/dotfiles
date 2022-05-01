@@ -6,7 +6,7 @@
 # scrot "$tmpbg"
 # betterlockscreen -u "$tmpbg" --fx blur
 
-betterlockscreen -u "$HOME/wallpaper/catppuccin/landscapes/salty_mountains.png" --fx blur
+betterlockscreen -u "$HOME/wallpaper/catppuccin/minimalistic/buttons.png" --fx blur
 
 # lock display
 betterlockscreen --lock blur
