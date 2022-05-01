@@ -38,8 +38,10 @@ baloo-widgets 22.04.0-1
 base 2-2
 bash 5.1.016-1
 bat 0.20.0-2
+bc 1.07.1-4
 berry-git git+8a8857-1
 betterdiscord-installer-bin 1.1.1-2
+betterlockscreen 4.0.3-2
 binutils 2.38-4
 bison 3.8.2-4
 bluedevil 1:5.24.4-1
@@ -131,6 +133,7 @@ fabric-installer 0.10.2-1
 fakeroot 1.28-1
 faudio 22.04-1
 fd 8.3.2-1
+feh 3.8-2
 ffmpeg 2:5.0-6
 ffmpeg-compat-57 3.4.9-1
 ffmpeg4.4 4.4.1-4
@@ -372,6 +375,7 @@ hwdata 0.358-1
 hwloc 2.7.1-1
 hyphen 2.8.8-3
 i3-wm 4.20.1-2
+i3lock-color 2.13.c.4-1
 iana-etc 20220325-1
 icu 71.1-1
 imagemagick 7.1.0.31-1
@@ -1076,6 +1080,7 @@ rhash 1.4.2-1
 ripgrep 13.0.0-2
 rnnoise 0.4.1-1
 rofi 1.7.3-1
+rofi-code-git 0.2.r2.g50806b6-1
 rsync 3.2.4-1
 rtkit 0.13-1
 rtmpdump 1:2.4.r99.f1b83c1-2
