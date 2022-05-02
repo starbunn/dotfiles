@@ -115,13 +115,13 @@ alt + m; s
 
 # inc. vol by 2%
 alt + period
-	pactl set-sink-volume @DEFAULT_SINK@ +2%  && pactl get-default-sink
+	pactl set-sink-volume @DEFAULT_SINK@ +2%  && pactl get-default-sink && ~/bin/vol.sh
 # inc. vol by 10%
 alt + shift + period
 	pactl set-sink-volume @DEFAULT_SINK@ +10%
 # dec. vol by 2%
 alt + comma
-	pactl set-sink-volume @DEFAULT_SINK@ -2%  && pactl get-default-sink
+	pactl set-sink-volume @DEFAULT_SINK@ -2%  && pactl get-default-sink && ~/bin/vol.sh
 # dec. vol by 10%
 alt + shift + comma
 	pactl set-sink-volume @DEFAULT_SINK@ -10%

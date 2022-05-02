@@ -20,7 +20,7 @@ clipmenud &
 
 ## CURSOR ##
 xsetroot -cursor_name left_ptr
-# ~/bin/fixmouse &
+~/bin/fixmouse &
 
 ## MONITORS
 
@@ -55,7 +55,8 @@ bspc rule -a lunarclient        state=floating desktop='5'
 bspc rule -a Steam              state=floating desktop='5' follow=on
 bspc rule -a Code               desktop='1' focus=on
 bspc rule -a Alacritty          desktop='2' focus=on
-bspc rule -a firefox         desktop='3' focus=on
+bspc rule -a firefox            desktop='3' focus=on
+bspc rule -a KeyOverlay         floating=on
 
 ## BORDERS ##
 bspc config border_width 3
