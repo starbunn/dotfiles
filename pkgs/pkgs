@@ -73,6 +73,7 @@ cantarell-fonts 1:0.303.1-1
 cava 0.8.2-1
 cblas 3.10.1-1
 cdparanoia 10.2-8
+chafa 1.10.1-1
 cheat 4.2.3-4
 choose-rust-git r112.d434bd2-1
 chromaprint 1.5.1-3
@@ -91,6 +92,7 @@ coreutils 9.1-1
 criu 3.16.1-4
 crun 1.4.5-1
 cryptsetup 2.4.3-2
+csfml 2.5.1-1
 curl 7.83.0-1
 dav1d 0.9.2-1
 db 5.3.28-5
@@ -114,6 +116,10 @@ docker 1:20.10.14-1
 dog 0.1.0-3
 dolphin 22.04.0-1
 dosfstools 4.2-2
+dotnet-host 6.0.2.sdk102-1
+dotnet-runtime 6.0.2.sdk102-1
+dotnet-sdk 6.0.2.sdk102-1
+dotnet-targeting-pack 6.0.2.sdk102-1
 double-conversion 3.2.0-1
 doxygen 1.9.3-1
 drkonqi 5.24.4-1
@@ -187,6 +193,7 @@ git-delta 0.12.1-1
 github-cli 2.9.0-2
 gitkraken 8.4.0-2
 glew 2.2.0-2
+glew1.5 1.5.8-5
 glib-networking 1:2.72.0-1
 glib2 2.72.1-1
 glibc 2.35-3
@@ -671,6 +678,7 @@ libinput 1.20.1-1
 libinstpatch 1.1.6-1
 libisl 0.24-4
 libjpeg-turbo 2.1.3-1
+libjpeg6-turbo 1.5.3-2
 libkate 0.4.1-8
 libksba 1.6.0-1
 libkscreen 5.24.4-1
@@ -722,6 +730,7 @@ libpipeline 1.5.6-1
 libplacebo 4.192.1-2
 libplist 2.2.0-5
 libpng 1.6.37-3
+libpng12 1.2.59-2
 libproxy 0.4.17-6
 libpsl 0.21.1-1
 libpulse 15.0-4
@@ -887,6 +896,7 @@ neon 0.32.2-1
 neovide-git 0.8.0.r21.ge2e4f5a-1
 neovim 0.7.0-3
 nerd-fonts-fira-code 2.1.0-2
+netstandard-targeting-pack 6.0.2.sdk102-1
 nettle 3.7.3-1
 network-manager-applet 1.26.0-1
 networkmanager 1.36.4-1
@@ -897,6 +907,7 @@ ninja 1.10.2-1
 nitrogen 1.6.1-4
 nm-connection-editor 1.26.0-1
 nmap 7.92-1
+no-more-secrets 1.0.1-1
 node-gyp 9.0.0-1
 nodejs 17.9.0-2
 nodejs-nopt 5.0.0-2
@@ -1125,6 +1136,7 @@ sdl2 2.0.22-1
 sed 4.8-1
 semver 7.3.7-1
 serd 0.30.10-1
+sfml 2.5.1-2
 shaderc 2022.1-3
 shadow 4.11.1-1
 shared-mime-info 2.0+144+g13695c7-1
