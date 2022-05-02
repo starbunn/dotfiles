@@ -11,7 +11,7 @@ these dotfiles are tracked in a bare git repository. this method has been descri
 - Scripts
 - Themes
 - Program Configs
-- Packages (TODO)
+- Packages
 
 ## DE Config
 
@@ -51,7 +51,12 @@ all scripts i have made will be in [bin](https://github.com/noirelapine/dotfiles
 i think this one is self-explanatory. it contains VSCode, Discord, etc.
 
 ## Packages
-i hope to be able to have a packages install script that installs every package i've installed with paru, on any arch system.
+in [pkgs](https://github.com/noirelapine/dotfiles/blob/base/pkgs) there is 2 scripts:
+
+- updatelist
+- install
+
+these two scripts make sure everything works no matter what if im on arch linux and something requires a `paru` or `pacman` package.
 
 mostly for my own convenience.
 
