@@ -41,11 +41,11 @@ i use nitrogen to set my desktop wallpaper in xorg. it's lightweight and doesn't
 
 ## System Files
 
-you can find system files scattered around the place, but they can mostly be found in [.config/setup](https://github.com/ashxi/dotfiles/blob/base/.config/setup)
+you can find system files scattered around the place, but they can mostly be found in [.config/setup](https://github.com/noirelapine/dotfiles/blob/base/.config/setup)
 
 ## Scripts
 
-all scripts i have made will be in [bin](https://github.com/ashxi/dotfiles/blob/base/bin/)
+all scripts i have made will be in [bin](https://github.com/noirelapine/dotfiles/blob/base/bin/)
 
 ## Program Configs
 i think this one is self-explanatory. it contains VSCode, Discord, etc.
@@ -58,7 +58,7 @@ mostly for my own convenience.
 ## ashley's cheat sheet to install this shit
 
 ```bash
-git clone --bare git@github.com:ashxi/dotfiles.git ~/dotfiles.git
+git clone --bare git@github.com:noirelapine/dotfiles.git ~/dotfiles.git
 alias dots='git --git-dir=$HOME/dotfiles.git --work-tree=$HOME'
 dots config --local status.showUntrackedFiles no
 dots checkout
