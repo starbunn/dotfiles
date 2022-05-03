@@ -12,7 +12,7 @@
 ### AUTOSTART ###
 nitrogen --restore &
 pgrep -x sxhkd > /dev/null || sxhkd &
-picom --log-file ~/picom.log &
+picom --log-file ~/picom.log --experimental-backends &
 # figure out what -> is # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/wired &
 flameshot &
