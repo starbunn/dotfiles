@@ -8,6 +8,7 @@ alias v="nvim"
 alias c="clear"
 alias mkdir="mkdir -pv"
 alias open="xdg-open"
+alias e=$EDITOR
 
 src() {
     cd "$($ZDOTDIR/src $@)"
