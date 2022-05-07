@@ -1,5 +1,6 @@
 #!/bin/sh
-source ~/pkgs/install
+. "$HOME/pkgs/install"
 for script in ~/.config/setup/*.sh; do
-    source $script
+    # shellcheck source=/dev/null
+    . "$script"
 done
