@@ -28,7 +28,7 @@ disabled = false
 format = "[{](bold #524f67)[$duration]($style)[}](bold #524f67)"
 show_milliseconds = false
 style = "bold italic #ebbcba"
-min_time = "5000"
+min_time = 5000
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
