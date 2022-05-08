@@ -1,15 +1,22 @@
+e() {
+    $EDITOR $@
+}
+
 alias please="sudo"
 alias pwease="sudo"
 alias uwu="sudo"
 alias owo="sudo"
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
+alias v="EDITOR=nvim e"
 alias c="clear"
 alias mkdir="mkdir -pv"
 alias open="xdg-open"
-alias e=$EDITOR
 alias fsh="fast-theme"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+[ "$(which rg)" ] && alias grep="rg"
+
 
 src() {
     cd "$($ZDOTDIR/src $@)"
@@ -28,8 +35,9 @@ zconf() {
 
 alias zrc="zconf .zshrc"
 
-alias listpackages="paru -Qq | fzf --preview 'paru -Qil {}' --layout=reverse --bind 'enter:execute(paru -Qil {} | less)'"
-alias updatepackages="paru -Syy && paru -Syu"
+alias lp="paru -Qq | fzf --preview 'paru -Qil {}' --layout=reverse --bind 'enter:execute(paru -Qil {} | less)'"
+alias upgrade="paru -Syy && paru -Syu"
+alias i="paru -S"
 
 if [ "$(which exa)" ]; then
     alias l="exa -l --no-time --icons --sort=size"
