@@ -107,9 +107,13 @@ alt + g; l
 
 ## MUSIC ##
 
-# spotify
+# spotify-tui
 alt + m; s
-	spotify
+	alacritty --class spotifytui -e spt
+
+# spotify default
+alt + m; d; s
+    spotify
 
 ## VOLUME ##
 
