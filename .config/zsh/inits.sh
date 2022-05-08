@@ -19,6 +19,6 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
     ssh-add
 fi
 
-echo "don't forget to hit ^C if this is taking a while"
+lolcat <(echo "don't forget to hit ^C if this is taking a while")
 
 unset env

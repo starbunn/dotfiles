@@ -17,5 +17,5 @@ man() {
 }
 
 export EDITOR="code"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"

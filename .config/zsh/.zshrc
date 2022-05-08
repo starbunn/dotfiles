@@ -1,8 +1,6 @@
 #!/bin/sh
 export ZDOTDIR=$HOME/.config/zsh
-pfetch
-lolcat <(echo 'dreams')
-cat $ZDOTDIR/shellheader
+lolcat $ZDOTDIR/shellheader
 setopt appendhistory
 setopt inc_append_history
 export HISTTIMEFORMAT="[%F %T] "
