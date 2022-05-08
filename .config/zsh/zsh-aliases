@@ -14,6 +14,7 @@ alias fsh="fast-theme"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias r="ranger"
 
 [ "$(which rg)" ] && alias grep="rg"
 
