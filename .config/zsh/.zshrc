@@ -34,7 +34,7 @@ if [ ! -d "/tmp/$(whoami)/screenshots" ]; then
     mkdir -p "/tmp/$(whoami)/screenshots"
 fi
 
-[ "$(which bat)" ] && export BAT_THEME="Nord" && export MANPAGER="sh -c 'col -bx | bat --theme Nord -l man -p'"
+[ "$(which bat)" ] && export BAT_THEME="Catppuccin" &&
 
 # [ "$(which nvm)" ] && source /usr/share/nvm/init-nvm.sh
 . /opt/asdf-vm/asdf.sh
