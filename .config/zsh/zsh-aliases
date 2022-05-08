@@ -9,6 +9,7 @@ alias c="clear"
 alias mkdir="mkdir -pv"
 alias open="xdg-open"
 alias e=$EDITOR
+alias fsh="fast-theme"
 
 src() {
     cd "$($ZDOTDIR/src $@)"
