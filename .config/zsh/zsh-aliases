@@ -41,8 +41,8 @@ alias upgrade="paru -Syy && paru -Syu"
 alias i="paru -S"
 
 if [ "$(which exa)" ]; then
-    alias l="exa -l --no-time --icons --sort=size"
-    alias ls="exa -l --no-time --icons --sort=size"
+    alias l="exa -a --no-time --icons --sort=size"
+    alias ls="exa -a --no-time --icons --sort=size"
     alias ll="exa -la --no-time --icons --sort=size"
     alias la="exa -la --no-time --icons --sort=size"
     alias ghprojs="exa -la --no-time --icons -T -L 2 ~/code/gh"
@@ -54,7 +54,7 @@ fi
 
 if [ "$(which git)" ]; then
     alias g="git"
-    alias lg="exa -la --icons --time changed --git-ignore --git --sort=size"
+    alias lg="exa -la --icons --no-time --git-ignore --git --sort=size"
 fi
 
 if [ "$(which zoxide)" ]; then
