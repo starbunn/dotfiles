@@ -32,10 +32,10 @@ alias listpackages="paru -Qq | fzf --preview 'paru -Qil {}' --layout=reverse --b
 alias updatepackages="paru -Syy && paru -Syu"
 
 if [ "$(which exa)" ]; then
-    alias l="exa -a --icons"
-    alias ls="exa -a --icons"
-    alias ll="exa -la --no-time --icons"
-    alias la="exa -la --no-time --icons"
+    alias l="exa -l --no-time --icons --sort=size"
+    alias ls="exa -l --no-time --icons --sort=size"
+    alias ll="exa -la --no-time --icons --sort=size"
+    alias la="exa -la --no-time --icons --sort=size"
     alias ghprojs="exa -la --no-time --icons -T -L 2 ~/code/gh"
 fi
 
@@ -45,7 +45,7 @@ fi
 
 if [ "$(which git)" ]; then
     alias g="git"
-    alias lg="exa -la --icons --no-time --git-ignore --git"
+    alias lg="exa -la --icons --time changed --git-ignore --git --sort=size"
 fi
 
 if [ "$(which zoxide)" ]; then
