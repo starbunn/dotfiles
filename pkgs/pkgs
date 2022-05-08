@@ -1134,8 +1134,6 @@ rust 1:1.60.0-1
 sbc 1.5-2
 scdoc 1.11.2-3
 scrot 1.7-1
-sddm 0.19.0-8
-sddm-kcm 5.24.4-1
 sdl2 2.0.22-1
 sed 4.8-1
 semver 7.3.7-1
