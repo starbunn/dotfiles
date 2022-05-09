@@ -109,3 +109,5 @@ zsh_add_file "inits.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zsh_add_file "zsh-nvm"
 export PATH=$PATH:/home/ashx/.spicetify
+
+source /home/ashe/.config/broot/launcher/bash/br
