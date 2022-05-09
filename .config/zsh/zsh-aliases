@@ -62,3 +62,10 @@ fi
 if [ "$(which zoxide)" ]; then
     eval "$(zoxide init zsh)"
 fi
+
+themingexa() {
+    clear
+    . ~/.config/zsh/zsh-exports
+    exa --long --group --classify
+    fsh -p
+}
