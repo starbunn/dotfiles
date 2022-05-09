@@ -30,12 +30,14 @@ export NB_COLOR_PRIMARY="${NB_COLOR_PRIMARY:-1}" # Set by `nb` • Sat Apr 23 11
 
 export NB_COLOR_SECONDARY="${NB_COLOR_SECONDARY:-239}" # Set by `nb` • Sat Apr 23 11:16:19 PM EDT 2022
 
-export NB_SYNTAX_THEME="${NB_SYNTAX_THEME:-Nord}" # Set by `nb` • Sat Apr 23 11:16:45 PM EDT 2022
 
 export NB_COLOR_THEME="${NB_COLOR_THEME:-catppuccin}" # Set by `nb` • Sat Apr 23 11:25:53 PM EDT 2022
 
 export NB_ACE_ENABLED=1
 
-export EDITOR="code" # Set by `nb` • Sun Apr 24 11:12:09 PM EDT 2022
 
 export NB_DIR="${NB_DIR:-/home/ashe/notes/notebooks}" # Set by `nb` • Tue Apr 26 08:52:28 PM EDT 2022
+
+export EDITOR="nvim" # Set by `nb` • Mon May  9 01:18:32 AM EDT 2022
+
+export NB_SYNTAX_THEME="${NB_SYNTAX_THEME:-Catppuccin}" # Set by `nb` • Mon May  9 01:24:50 AM EDT 2022
