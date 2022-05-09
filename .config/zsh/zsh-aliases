@@ -31,7 +31,7 @@ alias dots="/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME"
 alias lazydots="lazygit -w $HOME -g $HOME/dotfiles.git"
 
 zconf() {
-    vim $ZDOTDIR/$1
+    v $ZDOTDIR/$1
 }
 
 alias zrc="zconf .zshrc"

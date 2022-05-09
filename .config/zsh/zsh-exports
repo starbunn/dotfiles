@@ -4,9 +4,7 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 # export PATH="$HOME/.local/bin":$PATH
 # export MANPAGER="nvim +Man!"
-export MANPAGER="sh -c 'col -bx | bat --theme Nord -l man -p'"
-# export MANPAGER="nvimpager"
-export PAGER="nvimpager"
+export MANPAGER="nvimpager"
 export GOPATH="$HOME/.local/go"
 export PATH="$PATH:$GOPATH"
 
@@ -20,3 +18,7 @@ man() {
 export EDITOR="code"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
+export VISUAL="code"
+export VIDEO="vlc"
+export OPENER="xdg-open"
+export PAGER="nvimpager"

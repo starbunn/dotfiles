@@ -1,0 +1,168 @@
+# vim:filetype=sh
+set hidden true
+set ignorecase true
+set icons true
+
+cmd z %{{
+    result="$(zoxide query --exclude "${PWD}" -- "$1")"
+    lf -remote "send ${id} cd '${result}'"
+}}
+
+cmd zi %{{
+    result="$(zoxide query -i -- "$1")"
+    lf -remote "send ${id} cd '${result}'"
+}}
+
+cmd git_branch ${{
+    git branch | fzf | xargs git checkout
+    pwd_shell=$(pwd)
+    lf -remote "send $id updir"
+    lf -remote "send $id cd \"$pwd_shell\""
+}}
+map gb :git_branch
+map gp ${{clear; git pull --rebase || true; echo "press ENTER"; read ENTER}}
+map gs ${{clear; git status; echo "press ENTER"; read ENTER}}
+map gl ${{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit}}
+
+cmd on-cd &{{
+    # display git repository status in your prompt
+    source /usr/share/git/completion/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=auto
+    GIT_PS1_SHOWSTASHSTATE=auto
+    GIT_PS1_SHOWUNTRACKEDFILES=auto
+    GIT_PS1_SHOWUPSTREAM=auto
+    GIT_PS1_COMPRESSSPARSESTATE=auto
+    git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
+    fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}
+
+cmd fzf_jump ${{
+    res="$(fd . | fzf --reverse --header='Jump to:' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ] ; then
+        cmd="cd"
+    elif [ -f "$res" ] ; then
+        cmd="select"
+    else
+        exit 0
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map <c-f> :fzf_jump
+
+cmd fzf_search ${{
+    res="$( \
+        RG_PREFIX="rg --column --line-number --no-heading --color=always \
+            --smart-case "
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1
+    )"
+    [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map gs :fzf_search
+
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+    text/*|application/json) nvim "$f" ;;
+    video/*|image/*|application/pdf) xdg-open "$f" & disown;;
+    *) xdg-open "$f";;
+}}
+
+cmd mkdir %{{
+    printf " Directory name: "
+    read dir
+    mkdir -p "$dir"
+}}
+
+cmd touch %{{
+    printf " File name: "
+    read file
+    touch "$file"
+}}
+
+cmd chmod %{{
+    printf " Mode: "
+    read mode
+
+    for file in "$fx"
+    do
+        chmod "$mode" "$file"
+    done
+}}
+
+cmd broot_jump ${{
+    f=$(mktemp)
+    res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+    rm -f $f
+    if [ -f "$res" ] ; then
+        cmd="select"
+    elif [ -d "$res" ] ; then
+        cmd="cd"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+map f :broot_jump
+
+cmd rm %{{
+    for file in "$fx"
+    do
+        rm -ri "$file"
+    done
+}}
+
+cmd unarchive ${{
+    for file in "$fx"
+    do
+        case "$file" in
+        *.tar.gz|*.tgz) tar -xzf "$file" ;;
+        *.tar.bz2|*.tbz2) tar -xjf "$file" ;;
+        *.tar.xz) tar -xJf "$file" ;;
+        *.tar.lzma) tar -xJf "$file" ;;
+        *.tar.lzo) tar -xJf "$file" ;;
+        *.tar.zst) tar -xJf "$file" ;;
+        *.zip) unzip "$file" ;;
+        *.rar) unrar x "$file" ;;
+        *.7z) 7z x "$file" ;;
+        *.xz) xz -d "$file" ;;
+        *.lzma) lzma -d "$file" ;;
+        *.lzo) lzo -d "$file" ;;
+        *.zst) zstd -d "$file" ;;
+        *) echo "Unknown archive format" ;;
+        esac
+    done
+}}
+
+cmd zip %{{
+    for file in "$fx"
+    do
+        zip -r "$file.zip" "$file"
+    done
+}}
+
+cmd tar %{{
+    for file in "$fx"
+    do
+        tar -cf "$file.tar" "$file"
+    done
+}}
+
+cmd targz %{{
+    for file in "$fx"
+    do
+        tar -czf "$file.tar.gz" "$file"
+    done
+}}
+
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+map e
+map ee $nvim "$f"
+map es $sudo nvim "$f"
+map ec $$EDITOR "$f"
