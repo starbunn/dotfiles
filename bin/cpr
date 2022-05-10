@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my $folder = $ARGV[0] or die "please input a repo";
+$folder =~ s/.*\///g;
+my $repo = $ARGV[0];
+$repo =~ s/@/noirelapine/;
+
+if ($repo =~ m/noirelapine/) {
+    system('gh repo clone ' . $repo . ' ~/ne/' . $folder);
+} else {
+    system('gh repo clone ' . $repo . ' ~/ze/gh/' . $repo);
+}
