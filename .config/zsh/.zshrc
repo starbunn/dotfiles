@@ -108,9 +108,8 @@ zsh_add_file "inits.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zsh_add_file "zsh-nvm"
-export PATH=$PATH:/home/ashx/.spicetify
+export PATH=$PATH:$HOME/.spicetify
 
-source /home/ashe/.config/broot/launcher/bash/br
 # Change working dir in shell to last dir in lf on exit (adapted from ranger).
 #
 # You need to either copy the content of this file to your shell rc file
@@ -140,3 +139,7 @@ lfcd () {
         fi
     fi
 }
+
+export PATH=$PATH:$HOME/ne/dld
+
+source $HOME/.config/broot/launcher/bash/br

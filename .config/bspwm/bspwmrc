@@ -17,6 +17,7 @@ picom --log-file ~/docs/logs/picom.log --experimental-backends &
 /usr/bin/wired &
 flameshot &
 clipmenud &
+~/ne/dld/dld &
 
 ## CURSOR ##
 xsetroot -cursor_name left_ptr

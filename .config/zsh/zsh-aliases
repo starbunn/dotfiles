@@ -16,6 +16,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias lf="lfub"
 
+lfd() {
+    pushd $HOME/$(xdg-user-dir DOWNLOAD)
+    lfub
+    popd
+}
+
 [ "$(which rg)" ] && alias grep="rg"
 
 
@@ -49,6 +55,8 @@ if [ "$(which exa)" ]; then
     alias ghprojs="exa -la --no-time --icons -T -L 2 ~/code/gh"
     alias tree="exa --classify --tree --icons --sort=size"
 fi
+
+alias ld="ls $(xdg-user-dir DOWNLOAD)"
 
 if [ "$(which patch)" ]; then
     alias unpatch="patch -R"

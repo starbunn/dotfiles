@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" != "mv" || "$1" != "cp" ]; then
+    http $1 > "$(xdg-user-dir DOWNLOAD)/$(echo $1 | sed 's/.*\///g')"
+elif [ "$1" == "mv" ]; then
+    mv "$(xdg-user-dir DOWNLOAD)/$2" $3
+elif [ "$1" == "cp" ]; then
+    cp "$(xdg-user-dir DOWNLOAD)/$2" $3
+else
+    echo "USAGE: $0 <cp,mv,URL>"
+fi

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+inotifywait -m -r -e close_write,create --format "%f" $(xdg-user-dir DOWNLOAD) | while read file; do
+dwn="$(xdg-user-dir DOWNLOAD)"
+location="$dwn/$file"
+case "$(file -Lb --mime-type "$location")" in
+    text/*|inode-xempty) mv "$location" "$dwn/text/" ;;
+    applicaton/zip|application/gzip|application/x-rar|application/tar) mv "$location" "$dwn/archive/";;
+    image/*) mv "$location" "$dwn/img" ;;
+    video/*) mv "$location" "$dwn/vid" ;;
+    audio/*) mv "$location" "$dwn/audio" ;;
+    */pdf|*opendocument*|applicaton/vnd*|application/epub*) mv "$location" "$dwn/docs" ;;
+    application/json) mv "$location" "$dwn/data" ;;
+    *) echo "$(file -Lb --mime-type "$location")" ;;
+    esac
+done
