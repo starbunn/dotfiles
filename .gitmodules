@@ -4,16 +4,16 @@
 [submodule ".config/kitty/rose-pine"]
 	path = .config/kitty/rose-pine
 	url = https://github.com/rose-pine/kitty
-[submodule "pyrasevid/font"]
+[submodule "ne/pyrasevid/font"]
 	path = pyrasevid/font
 	url = https://github.com/be5invis/Iosevka
-[submodule "wallpaper/catppuccin"]
+[submodule "pics/wallpaper/catppuccin"]
 	path = wallpaper/catppuccin
 	url = https://github.com/catppuccin/wallpapers
 [submodule ".config/rofi/catppuccin"]
 	path = .config/rofi/catppuccin
 	url = https://github.com/catppuccin/rofi
-[submodule "/home/ashx/.config/spicetify/Themes/catppuccin"]
+[submodule "/lapi/.config/spicetify/Themes/catppuccin"]
 	path = /home/ashx/.config/spicetify/Themes/catppuccin
 	url = https://github.com/catppuccin/spicetify.git
 [submodule "ne/bunni/iosevka"]
