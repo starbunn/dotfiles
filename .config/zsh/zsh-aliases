@@ -23,7 +23,7 @@ src() {
     cd "$($ZDOTDIR/src $@)"
 }
 
-find() {
+rootfind() {
     pushd /; { fd . | rg $@ | $PAGER }; popd
 }
 
@@ -69,3 +69,9 @@ themingexa() {
     exa --long --group --classify
     fsh -p
 }
+
+alias cat="bat --style header,header-filesize,rule --pager='less -Rf'"
+alias find="fd"
+alias ping="gping"
+alias df="duf"
+alias du="dust"
