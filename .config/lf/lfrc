@@ -166,3 +166,6 @@ map e
 map ee $nvim "$f"
 map es $sudo nvim "$f"
 map ec $$EDITOR "$f"
+
+set previewer ~/.config/lf/scope-lf-wrapper.sh
+map i $LESSOPEN='| ~/.config/lf/scope-lf-wrapper.sh %s' less -R $f
