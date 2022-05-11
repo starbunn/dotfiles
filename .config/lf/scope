@@ -40,6 +40,6 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 		;;
 	*opendocument*) odt2txt "$1" ;;
 	application/pgp-encrypted) gpg -d -- "$1" ;;
-    *) echo ": FILETYPE :" && file --mime-type --dereference --brief -- "$1" ;;
+    *) echo ": FILETYPE :" && file -Lb -- "$1" ;;
 esac
 exit 1
