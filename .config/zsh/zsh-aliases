@@ -47,13 +47,13 @@ alias upgrade="paru -Syy && paru -Syu"
 alias i="paru -S"
 
 if [ "$(which exa)" ]; then
-    alias l="exa --classify -a --no-time --icons --sort=size"
-    alias ls="exa --classify -a --no-time --icons --sort=size"
-    alias ll="exa -la --classify --no-time --icons --sort=size"
-    alias la="exa -la --classify --no-time --icons --sort=size"
-    alias lrt="exa --classify --long --group --sort=newest -a --no-time --icons"
+    alias l="exa -a --no-time --icons --sort=size"
+    alias ls="exa -a --no-time --icons --sort=size"
+    alias ll="exa -la --no-time --icons --sort=size"
+    alias la="exa -la --no-time --icons --sort=size"
+    alias lrt="exa --long --group --sort=newest -a --no-time --icons"
     alias ghprojs="exa -la --no-time --icons -T -L 2 ~/code/gh"
-    alias tree="exa --classify --tree --icons --sort=size"
+    alias tree="exa --tree --icons --sort=size"
 fi
 
 alias ld="ls $(xdg-user-dir DOWNLOAD)"

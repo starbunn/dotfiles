@@ -6,6 +6,8 @@ setopt inc_append_history
 export HISTTIMEFORMAT="[%F %T] "
 setopt extended_history
 
+eval "$(dircolors $HOME/.config/dir_colors)"
+
 # some useful options
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
