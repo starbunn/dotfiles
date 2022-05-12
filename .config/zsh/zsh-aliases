@@ -78,7 +78,7 @@ themingexa() {
     fsh -p
 }
 
-alias cat="bat --style header,header-filesize,rule --pager='less -Rf'"
+alias cat="bat"
 alias find="fd"
 alias ping="gping"
 alias df="duf"
