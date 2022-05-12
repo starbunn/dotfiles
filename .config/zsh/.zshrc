@@ -62,6 +62,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
+fpath=($HOME/.config/zsh/comp $fpath)
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
