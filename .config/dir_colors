@@ -267,4 +267,4 @@ EXEC 38;5;73
 .*profile 38;5;36
 .git* 38;5;36
 .xresources 38;5;36
-
+.service 38;5;36
