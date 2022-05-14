@@ -18,6 +18,7 @@ picom --log-file ~/docs/logs/picom.log --experimental-backends &
 flameshot &
 clipmenud &
 ~/ne/dld/dld &
+xset r rate 340 35 &
 
 ## CURSOR ##
 xsetroot -cursor_name left_ptr
