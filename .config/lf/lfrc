@@ -3,30 +3,42 @@ set hidden true
 set ignorecase true
 set icons true
 set shellopts '-eu'
-set ifs '\n'
 set scrolloff 10
 
 cmd open ${{
-case $(file --mime-type "$(readlink -f "$f")" -b) in
-    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
-    image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
-    text/*|application/json|inode/x-empty) $EDITOR $fx;;
-    image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
-    image/svg+xml) display -- $f ;;
-    image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
-        setsid -f sxiv -aio 2>/dev/null | while read -r file; do
-            [ -z "$file"  ] && continue
-            lf -remote "send select \"$file\""
-            lf -remote "send toggle"
-        done &
-        ;;
-    audio/*) mpv --audio-display=no $f ;;
-    video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-    application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-    application/pgp-encrypted) $EDITOR $fx ;;
-    *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
-esac
+    case $(file --mime-type -b -- "$(readlink -f -- "$f" | sed 's/ /\\ /g')" ) in
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+        # *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)
+        #     mntdir="$f-archivemount"
+        #     [ ! -d "$mntdir" ] && {
+        #         mkdir "$mntdir"
+        #         archivemount "$f" "$mntdir"
+        #         echo "$mntdir" >> "/tmp/__lf_archivemount_$id"
+        #     }
+        #     lf -remote "send $id cd \"$mntdir\""
+        #     lf -remote "send $id reload"
+        #     ;;
+        image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        text/*|application/json|inode/x-empty) $EDITOR $fx;;
+        image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+        image/svg+xml) display -- $f ;;
+        # image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
+        #     setsid -f sxiv -aio 2>/dev/null | while read -r file; do
+        #         [ -z "$file"  ] && continue
+        #         lf -remote "send select \"$file\""
+        #         lf -remote "send toggle"
+        #     done &
+        #     ;;
+        # audio/*) mpv --audio-display=no $f ;;
+        audio/*) echo $f;read ;;
+        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+        application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        application/pgp-encrypted) $EDITOR $fx ;;
+        application/x-dosexec) wine $f ;;
+        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+    esac
 }}
+
 
 cmd z %{{
     result="$(zoxide query --exclude "${PWD}" -- "$1")"
@@ -88,12 +100,12 @@ cmd fzf_search ${{
 }}
 map gs :fzf_search
 
-cmd open ${{
-    case $(file --mime-type "$f" -bL) in
-    text/*|application/json) nvim "$f" ;;
-    video/*|image/*|application/pdf) xdg-open "$f" & disown;;
-    *) xdg-open "$f";;
-}}
+# cmd open ${{
+#     case $(file --mime-type "$f" -bL) in
+#     text/*|application/json) nvim "$f" ;;
+#     video/*|image/*|application/pdf) xdg-open "$f" & disown;;
+#     *) xdg-open "$f";;
+# }}
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
@@ -130,7 +142,7 @@ map f :broot_jump
 cmd rm %{{
     for file in "$fx"
     do
-        rm -ri "$file"
+        rm -rf "$file"
     done
 }}
 
@@ -189,6 +201,12 @@ cmd unarchive ${{
     done
 }}
 
+# cmd open ${{
+# case "$(file --dereference --brief --mime-type -- "$f")" in
+#         *.png|*.jpeg|*.jpg|*.webp
+# }}
+map o open
+
 cmd zip %{{
     for file in "$fx"
     do
@@ -221,7 +239,7 @@ map ee $nvim "$f"
 map es $sudo nvim "$f"
 map ec $$EDITOR "$f"
 
-set previewer ~/.config/lf/scope
+set previewer ~/.local/go/bin/pistol
 set cleaner ~/.config/lf/cleaner
 # map i $LESSOPEN='| ~/.config/lf/scope-lf-wrapper.sh %s' less -R $f
 
