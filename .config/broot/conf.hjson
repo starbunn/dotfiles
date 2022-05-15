@@ -6,9 +6,7 @@
 # - set default values for flags
 # - set special behaviors on specific paths
 # - and more...
-#
-# Configuration documentation is available at
-#     https://dystroy.org/broot
+# Configuration documentation is available at https://dystroy.org/broot
 #
 # This file's format is Hjson ( https://hjson.github.io/ ). Some
 # properties are commented out. To enable them, remove the `#`.
@@ -24,7 +22,7 @@
     # if you don't want the hidden files you can launch `br -H`)
     # A popular flag is the `g` one which displays git related info.
     #
-    # default_flags:
+    default_flags: ihpg
 
     ###############################################################
     # Date/Time format
@@ -72,7 +70,7 @@
     # and set it to false or true if you notice the colors in
     # previewed images are too off.
     #
-    # true_colors: false
+    true_colors: true
 
     ###############################################################
     # Icons
@@ -80,7 +78,7 @@
     # (see https://dystroy.org/broot/icons for installation and
     # troubleshooting)
     #
-    # icon_theme: vscode
+    icon_theme: vscode
 
     ###############################################################
     # Special paths
