@@ -142,5 +142,6 @@ lfcd () {
 }
 
 export PATH=$PATH:$HOME/ne/dld
+export PATH=$PATH:$HOME/.local/go/bin
 
 source $HOME/.config/broot/launcher/bash/br
