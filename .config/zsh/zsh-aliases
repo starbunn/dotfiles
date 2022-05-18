@@ -80,6 +80,6 @@ themingexa() {
 
 alias cat="bat"
 alias find="fd"
-alias ping="gping"
+alias ping="gping -c=red"
 alias df="duf"
 alias du="dust"
