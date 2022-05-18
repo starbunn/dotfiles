@@ -1,3 +1,5 @@
+# I NO LONGER USE THIS, I AM INSTEAD JUST USING GNOME-KEYRING-DAEMON
+
 # init ssh
 env=~/.ssh/agent.env
 
