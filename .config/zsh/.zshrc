@@ -30,7 +30,7 @@ xrandr() {
   nitrogen --set-centered ~/Wallpaper.png
 }
 
-[ "$(which starship)" ] && eval "$(starship init zsh)"
+# [ "$(which starship)" ] && eval "$(starship init zsh)"
 
 if [ ! -d "/tmp/$(whoami)/screenshots" ]; then
     mkdir -p "/tmp/$(whoami)/screenshots"
@@ -145,3 +145,6 @@ export PATH=$PATH:$HOME/ne/dld
 export PATH=$PATH:$HOME/.local/go/bin
 
 source $HOME/.config/broot/launcher/bash/br
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
