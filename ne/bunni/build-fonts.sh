@@ -1,5 +1,6 @@
 #!/bin/zsh
-BUILDPLAN=$1
+BUILDPLAN="$1.toml"
+rm -rf ./iosevka/private-build-plans.toml
 cp ./$BUILDPLAN ./iosevka/private-build-plans.toml
 cd iosevka
 npm install
