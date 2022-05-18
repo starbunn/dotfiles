@@ -1,3 +1,3 @@
 #!/bin/zsh
-cp -r ./bunni*/ ~/.local/share/fonts
+cp -r ./bunni*/ttf-unhinted/ ~/.local/share/fonts/bunnifonts
 # cp -r ./nerdfont ~/.font

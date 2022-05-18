@@ -4,9 +4,9 @@ cp ./$BUILDPLAN ./iosevka/private-build-plans.toml
 cd iosevka
 npm install
 {
-    npm run build -- ttf-unhinted::bunni && cp -r dist/bunni ../
-    npm run build -- ttf-unhinted::bunnit && cp -r dist/bunnit ../
-    npm run build -- ttf-unhinted::bunniq && cp -r dist/bunniq ../
+    npm run build -- ttf::bunni && cp -r dist/bunni ../
+    npm run build -- ttf::bunnit && cp -r dist/bunnit ../
+    npm run build -- ttf::bunniq && cp -r dist/bunniq ../
 }
 # cd ..
 # {
