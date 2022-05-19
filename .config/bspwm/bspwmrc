@@ -12,13 +12,13 @@
 ### AUTOSTART ###
 nitrogen --restore &
 pgrep -x sxhkd > /dev/null || sxhkd &
-picom --log-file ~/docs/logs/picom.log --experimental-backends &
 # figure out what -> is # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/wired &
 flameshot &
 clipmenud &
 ~/ne/dld/dld &
 xset r rate 340 35 &
+picom --log-file ~/docs/logs/picom.log --experimental-backends &
 
 ## CURSOR ##
 xsetroot -cursor_name left_ptr
