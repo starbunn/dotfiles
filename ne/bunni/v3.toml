@@ -3,6 +3,7 @@ family = "bunni"
 spacing = "normal"
 serifs = "sans"
 no-cv-ss = true
+export-glyph-names = true
 
 [buildPlans.bunni.variants.design]
 capital-g = "toothless-rounded-serifless-hooked"
@@ -98,11 +99,16 @@ shape = 600
 menu = 5
 css = "normal"
 
+[buildPlans.bunni.metric-override]
+powerlineScaleX = 1
+powerlineScaleY = 1.2
+
 [buildPlans.bunnit]
 family = "bunnit"
 spacing = "term"
 serifs = "sans"
 no-cv-ss = true
+export-glyph-names = true
 
 [buildPlans.bunnit.variants.design]
 capital-g = "toothless-rounded-serifless-hooked"
@@ -198,11 +204,16 @@ shape = 600
 menu = 5
 css = "normal"
 
+[buildPlans.bunnit.metric-override]
+powerlineScaleX = 1
+powerlineScaleY = 1.2
+
 [buildPlans.bunniq]
 family = "bunniq"
 spacing = "quasi-proportional-extension-only"
 serifs = "sans"
 no-cv-ss = true
+export-glyph-names = true
 
 [buildPlans.bunniq.variants.design]
 capital-g = "toothless-rounded-serifless-hooked"
@@ -297,3 +308,7 @@ diacritic-dot = "round"
 shape = 600
 menu = 5
 css = "normal"
+
+[buildPlans.bunniq.metric-override]
+powerlineScaleX = 1
+powerlineScaleY = 1.2

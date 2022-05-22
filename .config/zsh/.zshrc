@@ -30,7 +30,7 @@ xrandr() {
   nitrogen --set-centered ~/Wallpaper.png
 }
 
-# [ "$(which starship)" ] && eval "$(starship init zsh)"
+[ "$(which starship)" ] && eval "$(starship init zsh)"
 
 if [ ! -d "/tmp/$(whoami)/screenshots" ]; then
     mkdir -p "/tmp/$(whoami)/screenshots"
