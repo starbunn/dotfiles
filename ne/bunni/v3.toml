@@ -8,23 +8,23 @@ export-glyph-names = true
 [buildPlans.bunni.variants.design]
 capital-g = "toothless-rounded-serifless-hooked"
 capital-k = "symmetric-touching-serifless"
-a = "single-storey-earless-corner-serifless"
+a = "single-storey-earless-corner-tailed"
 b = "toothless-corner"
-c = "unilateral-inward-serifed"
+c = "serifless"
 d = "toothless-corner-serifless"
 f = "flat-hook"
 g = "single-storey-earless-corner-flat-hook"
-i = "serifed-flat-tailed"
+i = "zshaped"
 j = "flat-hook-serifed"
 k = "curly-serifless"
-l = "hooky"
+l = "serifed-flat-tailed"
 m = "short-leg"
 n = "earless-corner-straight"
 p = "earless-corner"
 q = "earless-corner"
-r = "earless-corner"
+r = "corner-hooked"
 s = "serifless"
-t = "standard-short-neck"
+t = "flat-hook-short-neck"
 u = "toothless-corner"
 x = "curly-serifless"
 y = "straight-turn"
@@ -101,7 +101,7 @@ css = "normal"
 
 [buildPlans.bunni.metric-override]
 powerlineScaleX = 1
-powerlineScaleY = 1.2
+powerlineScaleY = 1
 
 [buildPlans.bunnit]
 family = "bunnit"
@@ -113,23 +113,23 @@ export-glyph-names = true
 [buildPlans.bunnit.variants.design]
 capital-g = "toothless-rounded-serifless-hooked"
 capital-k = "symmetric-touching-serifless"
-a = "single-storey-earless-corner-serifless"
+a = "single-storey-earless-corner-tailed"
 b = "toothless-corner"
-c = "unilateral-inward-serifed"
+c = "serifless"
 d = "toothless-corner-serifless"
 f = "flat-hook"
 g = "single-storey-earless-corner-flat-hook"
-i = "serifed-flat-tailed"
+i = "zshaped"
 j = "flat-hook-serifed"
 k = "curly-serifless"
-l = "hooky"
+l = "serifed-flat-tailed"
 m = "short-leg"
 n = "earless-corner-straight"
 p = "earless-corner"
 q = "earless-corner"
-r = "earless-corner"
+r = "corner-hooked"
 s = "serifless"
-t = "standard-short-neck"
+t = "flat-hook-short-neck"
 u = "toothless-corner"
 x = "curly-serifless"
 y = "straight-turn"
@@ -206,7 +206,7 @@ css = "normal"
 
 [buildPlans.bunnit.metric-override]
 powerlineScaleX = 1
-powerlineScaleY = 1.2
+powerlineScaleY = 1
 
 [buildPlans.bunniq]
 family = "bunniq"
@@ -218,23 +218,23 @@ export-glyph-names = true
 [buildPlans.bunniq.variants.design]
 capital-g = "toothless-rounded-serifless-hooked"
 capital-k = "symmetric-touching-serifless"
-a = "single-storey-earless-corner-serifless"
+a = "single-storey-earless-corner-tailed"
 b = "toothless-corner"
-c = "unilateral-inward-serifed"
+c = "serifless"
 d = "toothless-corner-serifless"
 f = "flat-hook"
 g = "single-storey-earless-corner-flat-hook"
-i = "serifed-flat-tailed"
+i = "zshaped"
 j = "flat-hook-serifed"
 k = "curly-serifless"
-l = "hooky"
+l = "serifed-flat-tailed"
 m = "short-leg"
 n = "earless-corner-straight"
 p = "earless-corner"
 q = "earless-corner"
-r = "earless-corner"
+r = "corner-hooked"
 s = "serifless"
-t = "standard-short-neck"
+t = "flat-hook-short-neck"
 u = "toothless-corner"
 x = "curly-serifless"
 y = "straight-turn"
@@ -311,4 +311,4 @@ css = "normal"
 
 [buildPlans.bunniq.metric-override]
 powerlineScaleX = 1
-powerlineScaleY = 1.2
+powerlineScaleY = 1
